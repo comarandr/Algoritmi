@@ -1,0 +1,10 @@
+\contentsline {part}{I\hspace {1em}Algoritmi}{3}{}%
+\contentsline {section}{\numberline {1}Algoritmi di ordinamento}{3}{}%
+\contentsline {paragraph}{PROBLEMA}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Insertion sort}{3}{}%
+\contentsline {paragraph}{Complessità Spaziale}{3}{}%
+\contentsline {paragraph}{Complessità Temporale}{3}{}%
+\contentsline {paragraph}{Correttezza}{3}{}%
+\contentsline {part}{II\hspace {1em}Strutture Dati}{3}{}%
+\contentsline {section}{\numberline {2}strutture dati lineari}{3}{}%
+\contentsline {subsection}{\numberline {2.1}array}{3}{}%

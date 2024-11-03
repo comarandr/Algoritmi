@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % Required for inserting images
+%before \begin
+\usepackage{amssymb} %per i simboli matematici
+\usepackage{mathtools} %per simboli 
+\usepackage{listings} %per scrivere codice
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+\usepackage{color} %per colorare il codice
+\usepackage{verbatim} %per scrivere codice
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Algoritmi \& Strutture Dati}
+\author{Andrea Comar}
+\date{October 2024}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\part{Algoritmi}
+\section{Algoritmi di ordinamento}
+\paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri,
+trovare una permutazione tale che \\
+$a1 \leq a2  \leq ... \leq an$
+Soluzioni:
+\subsection{Insertion sort} 
+ \paragraph{Pseudocodice}
+    \begin{lstlisting}
+    INSERTION-SORT(A)
+    for (i $\leftarrow$ 2 to A.length){
+        key $\leftarrow$ A[i]
+        j $\leftarrow$ i - 1
+        while (j > 0 $\&\&$ A[j] > key){
+            A[j + 1] $\leftarrow$ A[j]
+            j $\leftarrow$ j - 1
+        }
+    }
+    \end{lstlisting}
+\paragraph{Complessità Spaziale}: $\theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
+per memorizzare i valori.
+
+\paragraph{Complessità Temporale}: \\
+- nel caso migliore: $\theta(n)$ vettore già ordinato\\
+- nel caso peggiore: $\theta(n^2)$ vettore ordinato al contrario\\
+
+\paragraph{Correttezza}: \\
+
+\part{Strutture Dati}
+\section{strutture dati lineari}
+\subsection{array}
+struttura dati \textbf{statica} (= suo spazio di memoria non varia) di n elementi.\\
+
+
+
+
+
+
+
+
+\end{document}
