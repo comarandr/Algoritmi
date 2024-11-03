@@ -6,6 +6,7 @@
 \usepackage{amssymb} %per i simboli matematici
 \usepackage{mathtools} %per simboli 
 \usepackage{listings} %per scrivere codice
+\usepackage[boxruled,vlined]{algorithm2e}
 \lstset{
   basicstyle=\ttfamily,
   mathescape
@@ -15,6 +16,7 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COPERTINA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Algoritmi \& Strutture Dati}
 \author{Andrea Comar}
 \date{October 2024}
@@ -24,39 +26,109 @@
 \newpage
 \tableofcontents
 \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITMI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Algoritmi}
 \section{Algoritmi di ordinamento}
-\paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri,
-trovare una permutazione tale che \\
-$a1 \leq a2  \leq ... \leq an$
+\paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri, trovare una permutazione tale che 
+$a1 \leq a2  \leq ... \leq an$. \newline
 Soluzioni:
-\subsection{Insertion sort} 
- \paragraph{Pseudocodice}
-    \begin{lstlisting}
-    INSERTION-SORT(A)
-    for (i $\leftarrow$ 2 to A.length){
-        key $\leftarrow$ A[i]
-        j $\leftarrow$ i - 1
-        while (j > 0 $\&\&$ A[j] > key){
-            A[j + 1] $\leftarrow$ A[j]
-            j $\leftarrow$ j - 1
+\subsection{Insertion sort}  %%% INSERTION SORT %%%
+
+
+    \begin{algorithm}[H] 
+        \caption{InsertionSort\label{IR}}
+        \KwData{A array, i indice, j indice}
+        \For{ $i \leftarrow 2$ to A.length }{
+            key $\leftarrow$ A[i]\;
+            j $\leftarrow$ j - 1\;
+            \While{ $j>0$ \&\&  $A[j] > key$}{
+                A[j+1] $\leftarrow$ A[j] \;
+                j $\leftarrow$ j - 1 \;
+            }
+            A[j+1] $\leftarrow$ key\;
         }
-    }
-    \end{lstlisting}
+        \end{algorithm}
+
 \paragraph{Complessità Spaziale}: $\theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
 per memorizzare i valori.
 
-\paragraph{Complessità Temporale}: \\
-- nel caso migliore: $\theta(n)$ vettore già ordinato\\
-- nel caso peggiore: $\theta(n^2)$ vettore ordinato al contrario\\
+\paragraph{Complessità Temporale}: \newline
+- nel caso migliore: $\theta(n)$ vettore già ordinato \newline
+- nel caso peggiore: $\theta(n^2)$ vettore ordinato al contrario 
 
-\paragraph{Correttezza}: \\
+\paragraph{Correttezza}:
 
+\newpage
+
+\subsection{Merge} %%% MERGE %%%
+Procedura che unisce due vettori ordinati in un unico vettore ordinato. I due vettori di input non devono necessariamente avere la stessa lunghezza. 
+
+\begin{algorithm}[H]
+\caption{Merge}
+\KwIn{Array $A$, indices $p$, $r$, $q$}
+\KwOut{Merged array $A[p..q]$}
+$i \leftarrow p$\;
+$j \leftarrow r + 1$\;
+$B \leftarrow$ new array of size $q - p + 1$\;
+$k \leftarrow 1$\;
+\While{$i < r + 1$ \textbf{and} $j < q + 1$}{
+    \eIf{$A[i] \leq A[j]$}{
+        $B[k] \leftarrow A[i]$\;
+        $i \leftarrow i + 1$\;
+    }{
+        $B[k] \leftarrow A[j]$\;
+        $j \leftarrow j + 1$\;
+    }
+    $k \leftarrow k + 1$\;
+}
+\If{$i > r$}{
+    \For{$l \leftarrow j$ \KwTo $q$}{
+        $B[k] \leftarrow A[l]$\;
+        $k \leftarrow k + 1$\;
+    }
+}
+\Else{
+    \For{$l \leftarrow i$ \KwTo $r$}{
+        $B[k] \leftarrow A[l]$\;
+        $k \leftarrow k + 1$\;
+    }
+}
+\end{algorithm}
+
+\subsection{Merge sort} %%% MERGE SORT %%%
+Idea: divide et impera. Divido il vettore in due parti, ordino le due parti e poi le unisco.
+
+\begin{algorithm}[H]
+\caption{MergeSort}
+\KwIn{Array $A$, indices $p$, $q$}
+\KwOut{Sorted array $A[p..q]$}
+\If{$p < q$}{
+    $r \leftarrow \floor{\frac{(p+q)}{2}}$\;
+    MergeSort(A,p,r)\;
+    MergeSort(A,r+1,q)\;
+    Merge(A,p,q,r)\;
+}
+\end{algorithm}
+
+MergeSort è un algoritmo basato su ricorsione. Necessita della procedura Merge per unire i due vettori.
+
+\paragraph{Complessità Spaziale}: $\theta(n)$ in quanto richiede un vettore di appoggio di dimensione n.
+
+\paragraph{Complessità Temporale}: $\theta(n \log n)$ in quanto il vettore viene diviso in due parti e
+ogni parte viene ordinata in $\log n$ passi.
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRUTTURE DATI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Strutture Dati}
-\section{strutture dati lineari}
-\subsection{array}
-struttura dati \textbf{statica} (= suo spazio di memoria non varia) di n elementi.\\
+\section{strutture dati lineari} %%% STRUTTURE DATI LINEARI %%%
+\subsection{array} %%% ARRAY %%%
+struttura dati \textbf{statica} (= suo spazio di memoria non varia) di n elementi. 
+Sono a \textbf{indirizzamento diretto} e l'accesso ha un costo fisso di $\theta (1)$
 
+\subsection{lista} %%% LISTA %%%
+
+\subsection{code di priorità} %%% CODE DI PRIORITA %%%
 
 
 
