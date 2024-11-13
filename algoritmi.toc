@@ -1,37 +1,37 @@
 \contentsline {part}{I\hspace {1em}Concetti Matematici}{3}{part.1}%
 \contentsline {section}{\numberline {1}Notazione asintotica}{3}{section.1}%
-\contentsline {paragraph}{Definizione}{3}{section*.2}%
+\contentsline {subsection}{\numberline {1.1}Notazione O-grande}{3}{subsection.1.1}%
 \contentsline {part}{II\hspace {1em}Algoritmi}{4}{part.2}%
 \contentsline {section}{\numberline {2}Algoritmi di ordinamento}{4}{section.2}%
-\contentsline {paragraph}{PROBLEMA}{4}{section*.3}%
+\contentsline {paragraph}{PROBLEMA}{4}{section*.2}%
 \contentsline {subsection}{\numberline {2.1}Insertion sort}{4}{subsection.2.1}%
-\contentsline {paragraph}{Complessità Spaziale}{4}{section*.4}%
-\contentsline {paragraph}{Complessità Temporale}{4}{section*.5}%
-\contentsline {paragraph}{Correttezza}{4}{section*.6}%
+\contentsline {paragraph}{Complessità Spaziale}{4}{section*.3}%
+\contentsline {paragraph}{Complessità Temporale}{4}{section*.4}%
+\contentsline {paragraph}{Correttezza}{4}{section*.5}%
 \contentsline {subsection}{\numberline {2.2}Merge}{5}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Merge sort}{5}{subsection.2.3}%
-\contentsline {paragraph}{Complessità Spaziale}{6}{section*.7}%
-\contentsline {paragraph}{Complessità Temporale}{6}{section*.8}%
+\contentsline {paragraph}{Complessità Spaziale}{6}{section*.6}%
+\contentsline {paragraph}{Complessità Temporale}{6}{section*.7}%
 \contentsline {subsection}{\numberline {2.4}Heapify (array)}{6}{subsection.2.4}%
-\contentsline {paragraph}{Complessità Spaziale}{6}{section*.9}%
-\contentsline {paragraph}{Complessità Temporale}{6}{section*.10}%
-\contentsline {paragraph}{Correttezza}{6}{section*.11}%
+\contentsline {paragraph}{Complessità Spaziale}{6}{section*.8}%
+\contentsline {paragraph}{Complessità Temporale}{6}{section*.9}%
+\contentsline {paragraph}{Correttezza}{6}{section*.10}%
 \contentsline {subsection}{\numberline {2.5}Build-Max-Heap (array)}{6}{subsection.2.5}%
 \contentsline {part}{III\hspace {1em}Strutture Dati}{7}{part.3}%
 \contentsline {section}{\numberline {3}strutture dati lineari}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Array}{7}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Lista}{7}{subsection.3.2}%
-\contentsline {paragraph}{liste concatenate}{7}{section*.12}%
+\contentsline {paragraph}{liste concatenate}{7}{section*.11}%
 \contentsline {subsection}{\numberline {3.3}Pila}{7}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Albero Binario}{7}{subsection.3.4}%
-\contentsline {paragraph}{albero binario completo:}{7}{section*.13}%
-\contentsline {paragraph}{albero binario quasi completo:}{8}{section*.14}%
-\contentsline {paragraph}{altezza di un nodo:}{8}{section*.15}%
+\contentsline {paragraph}{albero binario completo:}{7}{section*.12}%
+\contentsline {paragraph}{albero binario quasi completo:}{8}{section*.13}%
+\contentsline {paragraph}{altezza di un nodo:}{8}{section*.14}%
 \contentsline {subsection}{\numberline {3.5}Code di priorità}{8}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Max-Heap}{8}{subsection.3.6}%
-\contentsline {paragraph}{Heap:}{8}{section*.16}%
-\contentsline {paragraph}{Max-Heap:}{8}{section*.17}%
-\contentsline {paragraph}{proprietà}{8}{section*.18}%
-\contentsline {paragraph}{operazioni:}{8}{section*.19}%
-\contentsline {paragraph}{implementazione:}{9}{section*.20}%
-\contentsline {paragraph}{procedure di base:}{9}{section*.21}%
+\contentsline {paragraph}{Heap:}{8}{section*.15}%
+\contentsline {paragraph}{Max-Heap:}{8}{section*.16}%
+\contentsline {paragraph}{proprietà}{8}{section*.17}%
+\contentsline {paragraph}{operazioni:}{8}{section*.18}%
+\contentsline {paragraph}{implementazione:}{9}{section*.19}%
+\contentsline {paragraph}{procedure di base:}{9}{section*.20}%
