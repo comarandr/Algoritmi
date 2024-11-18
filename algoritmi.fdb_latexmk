@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1731964990.15025 "c:/Users/comar/Documents/Codice/algoritmi/algoritmi.tex" "algoritmi.pdf" "algoritmi" 1731964991.30528 0
+["pdflatex"] 1731966352.89616 "c:/Users/comar/Documents/Codice/algoritmi/algoritmi.tex" "algoritmi.pdf" "algoritmi" 1731966353.85589 0
   "C:/Users/comar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1730650304 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/comar/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1730637241 34112 907506e3d2dc654ab8f743d9ee5d29ab ""
   "C:/Users/comar/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1730627019 25420 a02f608c2e3292fafbf8636202f69b42 ""
@@ -117,11 +117,11 @@
   "C:/Users/comar/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty" 1700599895 10214 547fd4d29642cb7c80bf54b49d447f01 ""
   "C:/Users/comar/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1700599895 4545 9f5ea23ab1c91476c42749893f790666 ""
   "C:/Users/comar/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "algoritmi.aux" 1731964991 6514 21fbc1c8a8f22584e95a31241d846e5d "pdflatex"
-  "algoritmi.out" 1731964991 3443 cf1f1d1dc2e96c577e453dfaf54793b1 "pdflatex"
-  "algoritmi.tex" 1731964988 16201 8f48b5d97c6e52a0f8b621cc961ce729 ""
-  "algoritmi.toc" 1731964991 3567 bbd2f0ca9a4f06832d2ca9e09fe06cc9 "pdflatex"
-  "c:/Users/comar/Documents/Codice/algoritmi/algoritmi.tex" 1731964988 16201 8f48b5d97c6e52a0f8b621cc961ce729 ""
+  "algoritmi.aux" 1731966353 6514 21fbc1c8a8f22584e95a31241d846e5d "pdflatex"
+  "algoritmi.out" 1731966353 3443 cf1f1d1dc2e96c577e453dfaf54793b1 "pdflatex"
+  "algoritmi.tex" 1731966351 16201 8f48b5d97c6e52a0f8b621cc961ce729 ""
+  "algoritmi.toc" 1731966353 3567 bbd2f0ca9a4f06832d2ca9e09fe06cc9 "pdflatex"
+  "c:/Users/comar/Documents/Codice/algoritmi/algoritmi.tex" 1731966351 16201 8f48b5d97c6e52a0f8b621cc961ce729 ""
   (generated)
   "algoritmi.aux"
   "algoritmi.log"
