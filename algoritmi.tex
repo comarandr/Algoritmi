@@ -39,7 +39,46 @@ tra funzioni di costo degli algoritmi. Caratteristiche:
 \end{itemize}
 
 \subsection{Notazione O-grande} %%% NOTAZIONE O-GRANDE %%%
-$O(g(n))={f(n)| \ \exists c > 0 \ \exists n}$
+$O(g(n))=\{f(n)| \ \exists c > 0 \ \exists \bar{n} \ \forall n \geq \bar{n} \ f(n) \leq c \cdot g(n)    \}$ \newline
+oppure data $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ monotone crescenti \newline
+$f(n) = O(g(n))$ se $\exists c > 0 \ \exists \bar{n} \ \forall n \geq \bar{n} \ f(n) \leq c \cdot g(n)$ \newline
+
+La notazione O-grande rappresenta un limite superiore alla complessità di un algoritmo. \newline
+
+\subsection{Notazione Omega} %%% NOTAZIONE OMEGA %%%
+
+\subsection{Notazione Theta} %%% NOTAZIONE THETA %%%
+
+\subsection{Notazione o-piccolo} %%% NOTAZIONE PICCOLO-O %%%
+\subsection{Notazione omega-piccolo} %%% NOTAZIONE PICCOLO-OMEGA %%%
+\subsection{Notazione theta-piccolo} %%% NOTAZIONE PICCOLO-THETA %%%
+
+\section{Stime di somma}
+\subsection{Somma aritmetica}
+$T(n)=\sum_{i=1}^{h(n)}f(i)$
+\subsection{Somma di potenze o di Gauss} %%% 
+$\sum_{i=1}^{h}i^k=\theta(h^{k+1})$ , $k \in \mathbb{N}, k \geq 1$ 
+
+\subsection{Somma parziale della serie geometrica}
+\section{Logaritmi}
+\section{Equazioni ricorsive di complessità}
+\subsection{Metodo di sostituzione}
+\subsection{albero delle chiamate ricorsive}
+\section{Induzione}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 
