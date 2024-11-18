@@ -38,10 +38,117 @@ tra funzioni di costo degli algoritmi. Caratteristiche:
     \item $lim_{n \rightarrow \infty} \ f(n) = \infty$ (divergenti)
 \end{itemize}
 
-\subsection{Notazione O-grande} %%% NOTAZIONE O-GRANDE %%%
-$O(g(n))={f(n)| \ \exists c > 0 \ \exists n}$
+In breve la notazione asintotica si basa su tre simboli:
+\begin{itemize}
+    \item $O$ (O-grande): rappresenta il caso peggiore, ovvero il \textbf{limite asintotico superiore}. ~ "cresce al più come"
+    \item $\Omega$ (Omega): rappresenta il caso migliore, ovvero il \textbf{limite asintotico inferiore} ~ "cresce al meno come"
+    \item $\theta$ (theta): rappresenta il caso medio, ovvero il \textbf{limite asintotico stretto} ~ "stesso ordine di grande"
+\end{itemize}
+La notazione asintotica si fonda sul concetto di limite, in particolare sul \textbf{limite del rapporto}. Di base possiamo riscri
 
+
+\subsection{Notazione O-grande (e o-piccolo)} %%%%%%%%%%%%%%%%%%%%%%% NOTAZIONE O-GRANDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Notazione O-grande $O$} Abbiamo due definizioni equivalenti:
+\begin{itemize}
+\item $O(g(n))=\{f(n)| \ \exists c > 0 \ \exists \bar{n} \ \forall n \geq \bar{n} \ f(n) \leq c \cdot g(N)\}$ 
+\item Date $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ \textbf{monotone crescenti}, diciamo che $f(n) \in O(g(n))$ se $\exists c > 0 \ e \ \exists \bar{n} : \forall n \geq \bar{n} \ f(n) \leq c \cdot g(n)$
+\end{itemize}
+Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto} 
+\begin{itemize}
+    \item $\displaystyle \limsup_{n \to \infty} \lvert \frac{f(n)}{g(n)} \rvert < \infty \Leftrightarrow f(n) = O(g(n))$ 
+\end{itemize}
+Diciamo che g(n) domina f(n), ovvero f(n) ha un ordine di grandezza minore o uguale a g(n).
+\paragraph{notazione o-piccolo $o$} Se nelle definizioni invece di $\exists c$ vale per $\forall c$  si parla di notazione o-piccolo. Quindi vale il seguente limite:
+\begin{itemize}
+    \item $\displaystyle \lim_{n \rightarrow \infty} \frac{f(n)}{g(n)} = 0 \Leftrightarrow f(n) = o(g(n))$
+\end{itemize}
+Di conseguenza $f(n) = o(g(n)) \Rightarrow f(n) = O(g(n))$, NON il contrario.
+\subsection{Notazione Omega-grande (e omega-piccolo)} %%%%%%%%%%%%%%%%%% NOTAZIONE OMEGA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Notazione Omega-grande $\Omega$} Abbiamo due definizioni equivalenti:
+\begin{itemize}
+\item $\Omega(g(n))=\{f(n)| \ \exists c > 0 \ \exists \bar{n} \in \mathbb{N} \ \forall n \geq \bar{n} \ f(n) \geq c \cdot g(N)\}$ 
+\item Date $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ \textbf{monotone crescenti}, diciamo che $f(n) \in \Omega(g(n))$ se $\exists c > 0 \ e \ \exists \bar{n} : \forall n \geq \bar{n} \ f(n) \geq c \cdot g(n)$
+\end{itemize}
+Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto}
+\begin{itemize}
+    \item $\displaystyle \liminf_{n \rightarrow \infty} \lvert \frac{f(n)}{g(n)} \rvert > 0 \Leftrightarrow f(n) = \Omega(g(n))$
+\end{itemize}
+\paragraph{notazione omega-piccolo $\omega$} Se nelle definizioni invece di $\exists c$ vale per $\forall c$  si parla di notazione omega-piccolo. Quindi vale il seguente limite:
+\begin{itemize}
+    \item $\displaystyle \lim_{n\to\infty} \frac{f(n)}{g(n)} = \infty \Leftrightarrow f(n) = \omega(g(n))$
+\end{itemize}
+Di conseguenza $f(n) = \omega(g(n)) \Rightarrow f(n) = \Omega(g(n))$, NON il contrario.
+
+\subsection{Notazione Theta} %%%%%%%%%% NOTAZIONE THETA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+\item $\theta(g(n))=\{f(n)| \ \exists c_1, c_2 > 0 \ \exists \bar{n} \in \mathbb{N} \ \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)\}$
+\item Date $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ \textbf{monotone crescenti}, diciamo che $f(n) \in \theta(g(n))$ se $\exists c_1, c_2 > 0 \ e \ \exists \bar{n} : \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)$
+\end{itemize}
+
+Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto}
+\begin{itemize}
+    \item $\displaystyle 0 < \liminf_{n\to\infty} \lvert \frac{f(n)}{g(n)}\rvert \leq \limsup_{n\to\infty}\lvert \frac{f(n)}{g(n)}\rvert \leq \infty$
+\end{itemize}
+
+\paragraph{notazione $\sim$}  Se le due funzioni sono sia $o$ che $\theta$ allora si può scrivere $f(n) \sim g(n)$ e vale che:
+\begin{itemize}
+    \item $\displaystyle \lim_{n \rightarrow \inf} \frac{f(n)}{g(n)} = c , c \neq 0 \in \mathbb{R} \Leftrightarrow f(n) \sim g(n)$
+\end{itemize}
+Di conseguenza $f(n) \sim g(n) \Rightarrow f(n) = \theta(g(n))$, NON il contrario. \newline
+NOTA: per parlare di equivalenza asintotica $c$ dovrebbe essere esattamente uguale a 1.
 \newpage
+
+\subsection{Proprietà} %%%%%%%%%%%%%%%% PROPRIETA' %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Se f(n) è $O$ di g(n) allora g(n) è $\Omega$ di f(n). Significa che g(n) cresce di più asintoticamente.
+\begin{itemize}
+\item $f(n) \in O(g(n)) \ \Leftrightarrow \ g(n) \in \Omega(f(n))$
+\end{itemize}
+Se f(n) cresce allo stesso modo di g(n), g(n) rappresenta sia il limite superiore che inferiore.
+\begin{itemize}
+\item $f(n) \in \theta(g(n)) \ \Leftrightarrow \ f(n) \in O(g(n)) \ e \ f(n) \in \Omega(g(n))$
+\end{itemize}
+Analogamente per la notazione o-piccolo e omega-piccolo:
+\begin{itemize}
+\item $f(n) \in o(g(n)) \ \Leftrightarrow \ g(n) \in \omega(f(n))$
+\end{itemize}
+
+\subsection{Comportamento rispetto alle operazioni} %%%%%%%%%%%%%%%%% REGOLE %%%%%%%%%%%%%%%%%%
+Le seguenti regole valgono indistimamente per $O$, $\Omega$ e $\theta$, si ereditano dalle proprietà dei limiti.
+
+\paragraph{Somma}: 
+\begin{itemize}
+    \item $O(f(n)) + O(g(n)) = O(f(n) + g(n))$
+    \item $\Omega(f(n)) + \Omega(g(n)) = \Omega(f(n) + g(n))$
+    \item $\theta(f(n)) + \theta(g(n)) = \theta(f(n) + g(n))$
+\end{itemize}
+
+\paragraph{Prodotto}:
+
+\begin{itemize}
+    \item $O(f(n)) \cdot O(g(n)) = O(f(n) \cdot g(n))$
+    \item $\Omega(f(n)) \cdot \Omega(g(n)) = \Omega(f(n) \cdot g(n))$
+    \item $\theta(f(n)) \cdot \theta(g(n)) = \theta(f(n) \cdot g(n))$
+\end{itemize}
+
+Le precedenti regole NON valgono per operazioni di sottrazione e divisione.
+
+\paragraph{Costante}:
+\begin{itemize}
+    \item $O(c \cdot f(n)) = O(f(n))$, $\forall c \in \mathbb{R}_0$
+    \item $\Omega(c \cdot f(n)) = \Omega(f(n))$
+    \item $\theta(c \cdot f(n)) = \theta(f(n))$
+\end{itemize}
+
+\begin{itemize}
+    \item $O(f(n)) = O(g(n)) \ \Leftrightarrow \ f(n) \in \theta(g(n))$
+    \item $O(f(n)) = O(g(n)) \ \Leftrightarrow \ f(n) \in \theta(g(n))$
+\end{itemize}
+\newpage
+
+\section{Cenni utili sui limiti}
+
+\section{Stime di Somme}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITMI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Algoritmi}
