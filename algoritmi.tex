@@ -214,7 +214,7 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
     \hyperlink{heapify}{Heapify} & $O(\log n)$ & & & \\
     \hyperlink{buildmaxheap}{Build Max Heap} & $\Theta(n)$ & & & inplace \\ 
     \hyperlink{heapsort}{\textbf{Heap Sort}} & $O(n \log n)$ & & non stabile & \\
-    Quick Sort & $\Theta(n^2)$ & $\Theta(n \log n)$ & & inplace \\
+    \hyperlink{quicksort}{Quick Sort} & $\Theta(n^2)$ & $\Theta(n \log n)$ & & inplace \\
     \hyperlink{selection}{Selection Sort} & $\Theta(n^2)$ & & & \\
     \hyperlink{countingsort}{Counting Sort} & $\Theta(n^2)$  & $\Theta(n+k)$, $k \in O$(n) & stabile & non inplace\\    
     Radix Sort &  & $d \cdot \Theta(n)$ & stabile & inplace \\
@@ -361,9 +361,61 @@ $r \leftarrow$ right(i)\;
 
 
 \hypertarget{quicksort}{}\subsection{Quick Sort} %%%%%%%%%%%% QUICK SORT %%%%%%%%%%%%%
+Ho un vettore da ordinare, scelgo un elemento che fa da perno e divido 
+il vettore in due parti, uno contenente 
+elementi minori del perno e uno con elementi maggiori.
+
+\begin{algorithm}[H]
+\caption{QuickSort}
+\KwIn{Array $A$, indice $p$, indice $q$}
+\KwOut{Sorted array $A[p..q]$}
+\If{$p < q$}{
+    $r \leftarrow Partition(A,p,q)$\;
+    QuickSort(A,p,r-1)\;
+    QuickSort(A,r+1,q)\;
+}
+\end{algorithm}
+
+
+
+
+
 \hypertarget{partition}{\subsection{Partition}} %%%%%%%%%%%% PARTITION %%%%%%%%%%%%%
 \hypertarget{selection}{\subsection{Selection}} %%%%%%%%%%%% SELECTION %%%%%%%%%%%%%
+\section{Algoritmi di ordinamento non basati su scambi e confronti}
+\hypertarget{countingsort}{\subsection{Counting Sort}} %%%%%%%%%%%% COUNTING SORT %%%%%%%%%%%%%
+Richiede delle ipotesi sulle chiavi, ovvero che siano intere e comprese tra 0 e k, con \textbf{$k \in O(n)$}. Una nota importante è 
+che \textit{k non è necessariamente una costante}. Anche valori come $k = \frac{n}{2}$, $k = 10 \cdot n$, $k = \log n$ sono validi.
 
+
+\begin{algorithm}[H]
+\caption{CountingSort}
+\KwIn{Array $A$, Array $B$, $k$}
+\KwOut{Sorted array $A$}
+C $\leftarrow$ new array of size $k+1$\; 
+\For{j $\leftarrow$ 0 to k}{
+    C[j] $\leftarrow$ 0\;
+}
+\For{i $\leftarrow$ 1 to A.length}{
+    C[A[i]] $\leftarrow$ C[A[i]] + 1\;
+}
+\For{j $\leftarrow$ 1 to k}{
+    C[j] $\leftarrow$ C[j] + C[j-1]\;
+}
+\For{i $\leftarrow$ A.length down to 1}{
+    B[C[A[i]]] $\leftarrow$ A[i]\;
+    C[A[i]] $\leftarrow$ C[A[i]] - 1\;
+}
+\end{algorithm}
+\paragraph{Complessità temporale}: $\Theta(n+k)$ se ho per ipotesi che $k = O(n)$. Allora per possiamo ignorare i termini di ordine inferiore e otteniamo $\Theta(n)$.
+\paragraph{Complessità spaziale}: 
+
+
+\hypertarget{radix}{\subsection{Radix Sort}} %%%%%%%%%%%% RADIX SORT %%%%%%%%%%%%%
+Utilizzato per ordinare $n$ numeri di $d$ cifre. Procede a partire dalla cifra meno significativa fino a quella più significativa. A ogni iterazione applico un 
+algoritmo di ordinamento stabile su una sola cifra. (es. counting sort).
+
+\hypertarget{bucketsort}{\subsection{Bucket Sort}} %%%%%%%%%%%% BUCKET SORT %%%%%%%%%%%%%
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRUTTURE DATI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Strutture Dati}
