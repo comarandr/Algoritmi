@@ -42,7 +42,7 @@ In breve la notazione asintotica si basa su tre simboli:
 \begin{itemize}
     \item $O$ (O-grande): rappresenta il caso peggiore, ovvero il \textbf{limite asintotico superiore}. ~ "cresce al più come"
     \item $\Omega$ (Omega): rappresenta il caso migliore, ovvero il \textbf{limite asintotico inferiore} ~ "cresce al meno come"
-    \item $\theta$ (theta): rappresenta il caso medio, ovvero il \textbf{limite asintotico stretto} ~ "stesso ordine di grande"
+    \item $\Theta$ (theta): rappresenta il caso medio, ovvero il \textbf{limite asintotico stretto} ~ "stesso ordine di grande"
 \end{itemize}
 La notazione asintotica si fonda sul concetto di limite, in particolare sul \textbf{limite del rapporto}. Di base possiamo riscri
 
@@ -80,10 +80,10 @@ Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto}
 Di conseguenza $f(n) = \omega(g(n)) \Rightarrow f(n) = \Omega(g(n))$, NON il contrario.
 
 \subsection{Notazione Theta} %%%%%%%%%% NOTAZIONE THETA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\paragraph{Notazione Theta $\Theta$} Abbiamo due definizioni equivalenti:
 \begin{itemize}
-\item $\theta(g(n))=\{f(n)| \ \exists c_1, c_2 > 0 \ \exists \bar{n} \in \mathbb{N} \ \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)\}$
-\item Date $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ \textbf{monotone crescenti}, diciamo che $f(n) \in \theta(g(n))$ se $\exists c_1, c_2 > 0 \ e \ \exists \bar{n} : \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)$
+\item $\Theta(g(n))=\{f(n)| \ \exists c_1, c_2 > 0 \ \exists \bar{n} \in \mathbb{N} \ \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)\}$
+\item Date $f,g : \mathbb{N} \rightarrow \mathbb{R^+}$ \textbf{monotone crescenti}, diciamo che $f(n) \in \Theta(g(n))$ se $\exists c_1, c_2 > 0 \ e \ \exists \bar{n} : \forall n \geq \bar{n} \ c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)$
 \end{itemize}
 
 Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto}
@@ -91,58 +91,103 @@ Di base entrambe fanno riferimento al concetto di \textbf{limite del rapporto}
     \item $\displaystyle 0 < \liminf_{n\to\infty} \lvert \frac{f(n)}{g(n)}\rvert \leq \limsup_{n\to\infty}\lvert \frac{f(n)}{g(n)}\rvert \leq \infty$
 \end{itemize}
 
-\paragraph{notazione $\sim$}  Se le due funzioni sono sia $o$ che $\theta$ allora si può scrivere $f(n) \sim g(n)$ e vale che:
+\paragraph{notazione $\sim$}  Se le due funzioni sono sia $o$ che $\Theta$ allora si può scrivere $f(n) \sim g(n)$ e vale che:
 \begin{itemize}
     \item $\displaystyle \lim_{n \rightarrow \inf} \frac{f(n)}{g(n)} = c , c \neq 0 \in \mathbb{R} \Leftrightarrow f(n) \sim g(n)$
 \end{itemize}
-Di conseguenza $f(n) \sim g(n) \Rightarrow f(n) = \theta(g(n))$, NON il contrario. \newline
+Di conseguenza $f(n) \sim g(n) \Rightarrow f(n) = \Theta(g(n))$, NON il contrario. \newline
 NOTA: per parlare di equivalenza asintotica $c$ dovrebbe essere esattamente uguale a 1.
 \newpage
 
-\subsection{Proprietà} %%%%%%%%%%%%%%%% PROPRIETA' %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proprietà di base} %%%%%%%%%%%%%%%% PROPRIETA' %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Se f(n) è $O$ di g(n) allora g(n) è $\Omega$ di f(n). Significa che g(n) cresce di più asintoticamente.
 \begin{itemize}
 \item $f(n) \in O(g(n)) \ \Leftrightarrow \ g(n) \in \Omega(f(n))$
 \end{itemize}
 Se f(n) cresce allo stesso modo di g(n), g(n) rappresenta sia il limite superiore che inferiore.
 \begin{itemize}
-\item $f(n) \in \theta(g(n)) \ \Leftrightarrow \ f(n) \in O(g(n)) \ e \ f(n) \in \Omega(g(n))$
+\item $f(n) \in \Theta(g(n)) \ \Leftrightarrow \ f(n) \in O(g(n)) \ \wedge \ f(n) \in \Omega(g(n))$
 \end{itemize}
 Analogamente per la notazione o-piccolo e omega-piccolo:
 \begin{itemize}
 \item $f(n) \in o(g(n)) \ \Leftrightarrow \ g(n) \in \omega(f(n))$
 \end{itemize}
-
-\subsection{Comportamento rispetto alle operazioni} %%%%%%%%%%%%%%%%% REGOLE %%%%%%%%%%%%%%%%%%
-Le seguenti regole valgono indistimamente per $O$, $\Omega$ e $\theta$, si ereditano dalle proprietà dei limiti.
-
-\paragraph{Somma}: 
+Infine due funzioni piuttosto basilari, ovvero:
 \begin{itemize}
-    \item $O(f(n)) + O(g(n)) = O(f(n) + g(n))$
-    \item $\Omega(f(n)) + \Omega(g(n)) = \Omega(f(n) + g(n))$
-    \item $\theta(f(n)) + \theta(g(n)) = \theta(f(n) + g(n))$
+    \item $f=O(f)$ 
+    \item $f = o(f) \Rightarrow f \equiv 0 $
 \end{itemize}
 
-\paragraph{Prodotto}:
+\subsection{Comportamento rispetto alle operazioni} %%%%%%%%%%%%%%%%% REGOLE %%%%%%%%%%%%%%%%%%
+Le seguenti regole valgono indistimamente per $O$, $\Omega$ e $\Theta$, si ereditano dalle proprietà dei limiti.
+\paragraph{Abuso di notazione}
+\begin{itemize}
+    \item $f(x) = O(g(x))$ non è corretto in quanto non sono effettivamente uguali, tuttavia si usa per comodità al posto di $f(x) \in O(g(x))$
+\end{itemize}
+\paragraph{Transitività}
+\begin{itemize}
+    \item $f \in O(g) \ \wedge \ g \in O(h) \ \Rightarrow \ f \in O(h)$
+    \item $f \in \Omega(g) \ \wedge \ g \in \Omega(h) \ \Rightarrow \ f \in \Omega(h)$
+    \item $f \in \Theta(g) \ \wedge \ g \in \Theta(h) \ \Rightarrow \ f \in \Theta(h)$
+    \item $f \in o(g) \ \wedge \ g \in o(h) \ \Rightarrow \ f \in o(h)$
+    \item $f \in \omega(g) \ \wedge \ g \in \omega(h) \ \Rightarrow \ f \in \omega(h)$
+\end{itemize}
+
+\paragraph{Additività}
+\begin{itemize}
+    \item $f \in O(h) \ \wedge \ g \in O(h) \ \Rightarrow \ f + g \in O(h)$
+    \item $f \in \Omega(h) \ \wedge \ g \in \Omega(h) \ \Rightarrow \ f + g \in \Omega(h)$
+    \item $f \in \Theta(h) \ \wedge \ g \in \Theta(h) \ \Rightarrow \ f + g \in \Theta(h)$
+\end{itemize}
+\paragraph{Riflessività}
+\begin{itemize}
+    \item $f \in O(f)$, con abuso di notazione $f(n) = O(f(n))$
+    \item $f \in \Omega(f)$, con abuso di notazione $f(n) = \Omega(f(n))$
+    \item $f \in \Theta(f)$, con abuso di notazione $f(n) = \Theta(f(n))$
+\end{itemize}
+\paragraph{Simmetria}
+\begin{itemize}
+    \item $f = \Theta(g) \ \Rightarrow \ g = \Theta(f)$
+\end{itemize}
+\paragraph{Simmetria trasposta}
+\begin{itemize}
+    \item $f = O(g) \ \Rightarrow \ g = \Omega(f)$
+    \item $f = o(g) \ \Rightarrow \ g = \omega(f)$
+\end{itemize}
+\paragraph{Somma di due funzioni}: 
+\begin{itemize}
+    \item $f_1 \in O(g_1) \ \wedge \ f_2 \in O(g_2) \Rightarrow f_1 + f_2 \in O(g_1 + g_2)$
+    \item $f_1 \in \Omega(g_1) \ \wedge \ f_2 \in \Omega(g_2) \ \Rightarrow \ f_1 + f_2 \in \Omega(g_1 + g_2)$
+    \item $f_1 \in \Theta(g_1) \ \wedge \ f_2 \in \Theta(g_2) \ \Rightarrow \ f_1 + f_2 \in \Theta(g_1 + g_2)$
+\end{itemize}
+
+\paragraph{Prodotto di due funzioni}
 
 \begin{itemize}
-    \item $O(f(n)) \cdot O(g(n)) = O(f(n) \cdot g(n))$
-    \item $\Omega(f(n)) \cdot \Omega(g(n)) = \Omega(f(n) \cdot g(n))$
-    \item $\theta(f(n)) \cdot \theta(g(n)) = \theta(f(n) \cdot g(n))$
+    \item $f_1 \in O(g_1) \ \wedge \ f_2 \in O(g_2) \ \Rightarrow \ f_1 \cdot f_2 \in O(g_1 \cdot g_2 )$
+    \item $f_1 \in \Omega(g_1) \wedge f_2 \in \Omega(g_2) \ \Rightarrow \ f_1 \cdot f_2 \in \Omega(g_1 \cdot g_2)$
+    \item $f_1 \in \Theta(g_1) \ \wedge \ f_2 \in \Theta(g_2) \ \Rightarrow \ f_1 \cdot f_2 \in \Theta(g_1 \cdot g_2)$
 \end{itemize}
 
 Le precedenti regole NON valgono per operazioni di sottrazione e divisione.
 
-\paragraph{Costante}:
+\paragraph{Costante moltiplicatica}
 \begin{itemize}
-    \item $O(c \cdot f(n)) = O(f(n))$, $\forall c \in \mathbb{R}_0$
-    \item $\Omega(c \cdot f(n)) = \Omega(f(n))$
-    \item $\theta(c \cdot f(n)) = \theta(f(n))$
+    \item $O(c \cdot f) = O(f)$, $\forall c \in \mathbb{R}_0$
+    \item $\Omega(c \cdot f) = \Omega(f)$, $\forall c \in \mathbb{R}_0$
+    \item $\Theta(c \cdot f) = \Theta(f)$, $\forall c \in \mathbb{R}_0$
 \end{itemize}
+Semplicemente possiamo dire che la costante moltiplicativa non influisce sul comportamento asintotico.
 
+\paragraph{Trascurare termini additivi di ordine inferiore}
 \begin{itemize}
-    \item $O(f(n)) = O(g(n)) \ \Leftrightarrow \ f(n) \in \theta(g(n))$
-    \item $O(f(n)) = O(g(n)) \ \Leftrightarrow \ f(n) \in \theta(g(n))$
+    \item $g = O(f) \ \Rightarrow \ f + g = \Theta(f)$
+\end{itemize}
+Ovver possiamo considerare unicamente il termine di ordine maggiore.
+
+\paragraph{Trascurare le costanti moltiplicative} 
+\begin{itemize}
+    \item $\forall a > 0 \ \Rightarrow \ a \cdot f = \Theta(f)$
 \end{itemize}
 \newpage
 
@@ -152,6 +197,21 @@ Le precedenti regole NON valgono per operazioni di sottrazione e divisione.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITMI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Algoritmi}
+\section{Tabella riassuntiva costi temporali} %%%%%%%%%%%%%%%% TABELLA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Nome} & \textbf{Caso peggiore} & \textbf{Caso migliore\\medio} & \textbf{Input} & \textbf{Output}\\
+    \hline
+    Insertion Sort & $\Theta(n^2)$ & & \\
+    Merge Sort & $\Theta(n \log n)$ \\
+    Heap Sort & $\Theta(n \log n)$ \\
+    Quick Sort & $\Theta(n^2)$ \\
+    Counting Sort & $\Theta(n+k)$ \\
+    Radix Sort & $\Theta(d(n+k))$ \\
+    Bucket Sort & $\Theta(n^2)$ \\
+    \hline
+\end{tabular}
+
 \section{Algoritmi di ordinamento}
 \paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri, trovare una permutazione tale che 
 $a1 \leq a2  \leq ... \leq an$. \newline
@@ -173,12 +233,12 @@ Soluzioni:
         }
         \end{algorithm}
 
-\paragraph{Complessità Spaziale}: $\theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
+\paragraph{Complessità Spaziale}: $\Theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
 per memorizzare i valori.
 
 \paragraph{Complessità Temporale}: \newline
-- nel caso migliore: $\theta(n)$ vettore già ordinato \newline
-- nel caso peggiore: $\theta(n^2)$ vettore ordinato al contrario 
+- nel caso migliore: $\Theta(n)$ vettore già ordinato \newline
+- nel caso peggiore: $\Theta(n^2)$ vettore ordinato al contrario 
 
 \paragraph{Correttezza}:
 
@@ -236,9 +296,9 @@ Idea: divide et impera. Divido il vettore in due parti, ordino le due parti e po
 
 MergeSort è un algoritmo basato su ricorsione. Necessita della procedura Merge per unire i due vettori.
 
-\paragraph{Complessità Spaziale}: $\theta(n)$ in quanto richiede un vettore di appoggio di dimensione n.
+\paragraph{Complessità Spaziale}: $\Theta(n)$ in quanto richiede un vettore di appoggio di dimensione n.
 
-\paragraph{Complessità Temporale}: $\theta(n \log n)$ in quanto il vettore viene diviso in due parti e
+\paragraph{Complessità Temporale}: $\Theta(n \log n)$ in quanto il vettore viene diviso in due parti e
 ogni parte viene ordinata in $\log n$ passi.
 
 \subsection{Heapify (array)} %%%%%%%%%% HEAPIFY %%%%%%%%%%%%
@@ -291,7 +351,7 @@ $H.heapsize \leftarrow H.length$\;
 \section{strutture dati lineari} %%% STRUTTURE DATI LINEARI %%%
 \subsection{Array} %%%%%%%%%%%%%% ARRAY %%%
 struttura dati \textbf{statica} (= suo spazio di memoria non varia) di n elementi. 
-Sono a \textbf{indirizzamento diretto} e l'accesso ha un costo fisso di $\theta (1)$
+Sono a \textbf{indirizzamento diretto} e l'accesso ha un costo fisso di $\Theta (1)$
 
 \subsection{Lista} %%%%%%%%%%%% LISTA %%%
 Le liste sono strutture dati \textbf{dinamiche} (= il loro spazio di memoria può variare). 
@@ -305,8 +365,8 @@ Possono occupare spazi di
  
  \paragraph{liste concatenate}: ogni elemento della lista contiene un campo che punta all'elemento successivo.
  Nel caso di liste concatenate \textbf{psuh}
-e \textbf{pull} hanno complessità $\theta(1)$ in quanto conta soltanto la cella individuata dall'indice
- e \textbf{max} ha complessità $\theta(n)$.
+e \textbf{pull} hanno complessità $\Theta(1)$ in quanto conta soltanto la cella individuata dall'indice
+ e \textbf{max} ha complessità $\Theta(n)$.
  
 \subsection{Pila} %%%%%%%%%%%%% PILA %%%
 La pila è una struttura dati \textbf{dinamica} che permette di inserire \textbf{(push)} e cancellare \textbf{(pull)}
@@ -350,7 +410,7 @@ del proprio genitore.
 \paragraph{proprietà} 
 Data una max-heap di n nodi:
 \begin{itemize}
-    \item altezza: $\theta(\log n)$
+    \item altezza: $\Theta(\log n)$
     \item chiave massima si trova nella radice
     \item ogni percorso radice-foglia ha le chiavi ordinate in modo decrescente
     \item la chiave minima si trova su una foglia
