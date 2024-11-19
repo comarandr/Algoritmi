@@ -12,7 +12,13 @@
   mathescape
 }
 \usepackage{color} %per colorare il codice
-\usepackage{hyperref} %per i link
+\usepackage[hidelinks]{hyperref} %per i link
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = black, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
@@ -26,7 +32,7 @@
 \newpage
 \tableofcontents
 \newpage
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONCETTI MATEMATICI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Concetti Matematici}
 \section{Notazione asintotica} %%% NOTAZIONE ASINTOTICA %%%
@@ -194,29 +200,35 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
 \section{Cenni utili sui limiti}
 
 \section{Stime di Somme}
-
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITMI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Algoritmi}
 \section{Tabella riassuntiva costi temporali} %%%%%%%%%%%%%%%% TABELLA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c |c| c |c |c|}
     \hline
-    \textbf{Nome} & \textbf{Caso peggiore} & \textbf{Caso migliore\\medio} & \textbf{Input} & \textbf{Output}\\
+    \textbf{Algoritmo} & \textbf{peggiore} & \textbf{ migliore medio} & \textbf{stabile } & \textbf{Inplace}\\
     \hline
-    Insertion Sort & $\Theta(n^2)$ & & \\
-    Merge Sort & $\Theta(n \log n)$ \\
-    Heap Sort & $\Theta(n \log n)$ \\
-    Quick Sort & $\Theta(n^2)$ \\
-    Counting Sort & $\Theta(n+k)$ \\
-    Radix Sort & $\Theta(d(n+k))$ \\
-    Bucket Sort & $\Theta(n^2)$ \\
+    \hyperlink{insertionsort}{\textbf{Insertion Sort}} & $\Theta(n^2)$ & $\Theta(n)$ & stabile & inplace\\
+    \hyperlink{merge}{Merge} & $\Theta(n)$ & $\Theta(n)$ & stabile & non inplace\\
+    \hyperlink{mergesort}{\textbf{Merge Sort}}& $\Theta(n \log n)$ & $\Theta(n \log n)$ & & non inplace\\
+    \hyperlink{heapify}{Heapify} & $O(\log n)$ & & & \\
+    \hyperlink{buildmaxheap}{Build Max Heap} & $\Theta(n)$ & & & inplace \\ 
+    \hyperlink{heapsort}{\textbf{Heap Sort}} & $O(n \log n)$ & & non stabile & \\
+    Quick Sort & $\Theta(n^2)$ & $\Theta(n \log n)$ & & inplace \\
+    \hyperlink{selection}{Selection Sort} & $\Theta(n^2)$ & & & \\
+    \hyperlink{countingsort}{Counting Sort} & $\Theta(n^2)$  & $\Theta(n+k)$, $k \in O$(n) & stabile & non inplace\\    
+    Radix Sort &  & $d \cdot \Theta(n)$ & stabile & inplace \\
+    Bucket Sort & $\Theta(n^2)$ & $\Theta(n)$ & dipende & non inplace\\
     \hline
-\end{tabular}
 
-\section{Algoritmi di ordinamento}
+\end{tabular}
+\newpage
+
+\section{Algoritmi di ordinamento e costruzione}
 \paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri, trovare una permutazione tale che 
 $a1 \leq a2  \leq ... \leq an$. \newline
 Soluzioni:
-\subsection{Insertion sort}  %%%%%%%%% INSERTION SORT %%%
+\hypertarget{insertionsort}{} \subsection{Insertion sort}  %%%%%%%%% INSERTION SORT %%%
 
 
     \begin{algorithm}[H] 
@@ -244,7 +256,7 @@ per memorizzare i valori.
 
 \newpage
 
-\subsection{Merge} %%%%%%%%%%% MERGE %%%
+\hypertarget{merge}{} \subsection{Merge} %%%%%%%%%%% MERGE %%%
 Procedura che unisce due vettori ordinati in un unico vettore ordinato. I due vettori di input non devono necessariamente avere la stessa lunghezza. 
 
 \begin{algorithm}[H]
@@ -279,7 +291,7 @@ $k \leftarrow 1$\;
 }
 \end{algorithm}
 
-\subsection{Merge sort} %%%%%%%%%%% MERGE SORT %%%%%%%%%%%
+\hypertarget{mergesort}{}\subsection{Merge sort} %%%%%%%%%%% MERGE SORT %%%%%%%%%%%
 Idea: divide et impera. Divido il vettore in due parti, ordino le due parti e poi le unisco.
 
 \begin{algorithm}[H]
@@ -301,7 +313,20 @@ MergeSort è un algoritmo basato su ricorsione. Necessita della procedura Merge 
 \paragraph{Complessità Temporale}: $\Theta(n \log n)$ in quanto il vettore viene diviso in due parti e
 ogni parte viene ordinata in $\log n$ passi.
 
-\subsection{Heapify (array)} %%%%%%%%%% HEAPIFY %%%%%%%%%%%%
+\hypertarget{buildmaxheap}{}\subsection{Build-Max-Heap (array)} %%%%%%%%% BUILD MAX HEAP %%%%%%%%%
+Date n chiavi memorizzate in un array, voglio trasformare l'array in una max-heap.
+
+\begin{algorithm}[H]
+\caption{Build-Max-Heap}
+\KwIn{Array $H$}
+\KwOut{Max-heap $H$}
+$H.heapsize \leftarrow H.length$\;
+\For{$i \leftarrow \floor{\frac{H.length}{2}}$ downto 1}{
+    Heapify(H,i)\;
+}
+\end{algorithm}
+
+\hypertarget{heapify}{}\subsection{Heapify (array)} %%%%%%%%%% HEAPIFY %%%%%%%%%%%%
 Procedura che serve a trasformare una heap in una max-heap. \newline
 \textbf{pre-condizioni:} H[left(i)] e H[right(i)] sono max-heap.
 
@@ -330,20 +355,14 @@ $r \leftarrow$ right(i)\;
 \paragraph{Complessità Temporale}:
 \paragraph{Correttezza}:
 
-\subsection{Build-Max-Heap (array)} %%%%%%%%% BUILD MAX HEAP %%%%%%%%%
-Date n chiavi memorizzate in un array, voglio trasformare l'array in una max-heap.
-
-\begin{algorithm}[H]
-\caption{Build-Max-Heap}
-\KwIn{Array $H$}
-\KwOut{Max-heap $H$}
-$H.heapsize \leftarrow H.length$\;
-\For{$i \leftarrow \floor{\frac{H.length}{2}}$ downto 1}{
-    Heapify(H,i)\;
-}
-\end{algorithm}
 
 
+\hypertarget{heapsort}{}\subsection{Heap Sort} %%%%%%%%%%%% HEAP SORT %%%%%%%%%%%%%
+
+
+\hypertarget{quicksort}{}\subsection{Quick Sort} %%%%%%%%%%%% QUICK SORT %%%%%%%%%%%%%
+\hypertarget{partition}{\subsection{Partition}} %%%%%%%%%%%% PARTITION %%%%%%%%%%%%%
+\hypertarget{selection}{\subsection{Selection}} %%%%%%%%%%%% SELECTION %%%%%%%%%%%%%
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRUTTURE DATI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
