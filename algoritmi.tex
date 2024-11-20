@@ -204,7 +204,7 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITMI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Algoritmi}
 \section{Tabella riassuntiva costi temporali} %%%%%%%%%%%%%%%% TABELLA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{tabular}{|c |c| c |c |c|}
+\begin{tabular}{|c|c|c|c|c|}
     \hline
     \textbf{Algoritmo} & \textbf{peggiore} & \textbf{ migliore medio} & \textbf{stabile } & \textbf{Inplace}\\
     \hline
@@ -214,7 +214,7 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
     \hyperlink{heapify}{Heapify} & $O(\log n)$ & & & \\
     \hyperlink{buildmaxheap}{Build Max Heap} & $\Theta(n)$ & & & inplace \\ 
     \hyperlink{heapsort}{\textbf{Heap Sort}} & $O(n \log n)$ & & non stabile & \\
-    \hyperlink{quicksort}{Quick Sort} & $\Theta(n^2)$ & $\Theta(n \log n)$ & & inplace \\
+    \hyperlink{quicksort}{Quick Sort} & $\Theta(n^2)$ & $\Theta(n \log n)$ & non stabile &non inplace \\
     \hyperlink{selection}{Selection Sort} & $\Theta(n^2)$ & & & \\
     \hyperlink{countingsort}{Counting Sort} & $\Theta(n^2)$  & $\Theta(n+k)$, $k \in O$(n) & stabile & non inplace\\    
     Radix Sort &  & $d \cdot \Theta(n)$ & stabile & inplace \\
@@ -223,7 +223,19 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
 
 \end{tabular}
 \newpage
-
+\section{Cenni introduttivi da SISTEMARE}
+\paragraph{valutazione complessità}: \\
+Ogni istruzione di base (assegnamenti, confronti, operazioni algoritmiche) ha un costo costante $c_h$.
+Per semplicità, la funzione di complessità è così strutturata:
+\begin{itemize}
+    \item $Time: \mathbb{N} \rightarrow \mathbb{R^+}$
+\end{itemize}
+L'algoritmo ovviamente reagisce in modo diverso a seconda dell'input, pertanto parleremo di tempo assoluto nel:
+\begin{itemize}
+    \item \textbf{caso migliore}: $T_p:\mathbb{N} \leftarrow \mathbb{R^+}$, ovvero tempo impiegato al massimo
+    \item \textbf{caso peggiore}: input che massimizza il tempo di esecuzione
+    \item \textbf{caso medio}: input che si presenta con probabilità uniforme
+\end{itemize}
 \section{Algoritmi di ordinamento e costruzione}
 \paragraph{PROBLEMA} Problema data una sequenza a1, a2, ..., an di numeri, trovare una permutazione tale che 
 $a1 \leq a2  \leq ... \leq an$. \newline
@@ -246,18 +258,49 @@ Soluzioni:
         \end{algorithm}
 
 \paragraph{Complessità Spaziale}: $\Theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
-per memorizzare i valori.
+per memorizzare i valori. Questi lo rende un algoritmo \textbf{inplace}.
 
-\paragraph{Complessità Temporale}: \newline
-- nel caso migliore: $\Theta(n)$ vettore già ordinato \newline
-- nel caso peggiore: $\Theta(n^2)$ vettore ordinato al contrario 
-
+\paragraph{Complessità Temporale}:
+\begin{itemize}
+    \item nel caso migliore: $\Theta(n)$, input: vettore già ordinato
+    \item nel caso peggiore: $\Theta(n^2)$, input: vettore ordinato al contrario
+\end{itemize}
+Nel \textbf{caso medio} l'algoritmo ha complessità $\Theta(n^2)$. 
 \paragraph{Correttezza}:
 
 \newpage
+\hypertarget{mergesort}{}\subsection{Merge sort} %%%%%%%%%%% MERGE SORT %%%%%%%%%%%
+Problema: devo riordinare un generico array A di $n$ elementi. Immagino di voler riordinare una sottosezione di A, ovvero A[p..q].
+Trovo r pari a $ \floor{\frac{(p+q)}{2}}$ e ordino ricorsivamente le due sottosezioni A[p..r] e A[r+1..q]. Infine unisco le due sottosezioni 
+mediante la procedura \hyperlink{merge}{Merge}
 
+
+\begin{algorithm}[H]
+\caption{MergeSort}
+\KwIn{Array $A$, indices $p$, $q$}
+\KwOut{Sorted array $A[p..q]$}
+\If{$p < q$}{
+    $r \leftarrow \floor{\frac{(p+q)}{2}}$\;
+    MergeSort(A,p,r)\;
+    MergeSort(A,r+1,q)\;
+    Merge(A,p,q,r)\;
+}
+\end{algorithm}
+
+
+\paragraph{Complessità Spaziale}: $\Theta(n)$ in quanto richiede un vettore di appoggio di dimensione n.
+
+\paragraph{Complessità Temporale}: $\Theta(n \log n)$ in quanto il vettore viene diviso in due parti e
+ogni parte viene ordinata in $\log n$ passi. 
+\paragraph{Equazione ricorsiva di complessità:}
+$\begin{cases}
+    \Theta(1) \ n \leq 1\\
+    2T(\frac{n}{2}) + \Theta(n) \ n > 1\\
+\end{cases}$
+\newpage
 \hypertarget{merge}{} \subsection{Merge} %%%%%%%%%%% MERGE %%%
-Procedura che unisce due vettori ordinati in un unico vettore ordinato. I due vettori di input non devono necessariamente avere la stessa lunghezza. 
+La procedura prende in input o due vettori oppure un vettore con due sottosezioni \textbf{già ordinate} e le unisce in un unico vettore ordinato. 
+Si basa sul confronto tra i valori più piccoli delle due sottosezioni, operazione poco costosa in quanto sono ordinate.
 
 \begin{algorithm}[H]
 \caption{Merge}
@@ -290,28 +333,13 @@ $k \leftarrow 1$\;
     }
 }
 \end{algorithm}
+\paragraph{procedura:}
+La procedura Merge si basa sul \textbf{confrontare} i primi due valori delle rispettive sottosezioni (ovvero i \textbf{valori più piccoli}), inserirendo il minore in un vettore di appoggio B. L'elemento maggiore dei due viene 
+confrontato con l'elemento successivo dell'altra sottosezione, e così via. Se una delle due sottosezioni si esaurisce, allora si copiano tutti gli elementi rimanenti dell'altra sottosezione. 
+Il procedimento viene effettuato tramite due indici $i$ e $j$.
 
-\hypertarget{mergesort}{}\subsection{Merge sort} %%%%%%%%%%% MERGE SORT %%%%%%%%%%%
-Idea: divide et impera. Divido il vettore in due parti, ordino le due parti e poi le unisco.
+\paragraph{complessità temporale:} $\Theta(n)$ in quanto ogni elemento viene confrontato una sola volta, proprietà che deriva dal fatto che sono ordinate.
 
-\begin{algorithm}[H]
-\caption{MergeSort}
-\KwIn{Array $A$, indices $p$, $q$}
-\KwOut{Sorted array $A[p..q]$}
-\If{$p < q$}{
-    $r \leftarrow \floor{\frac{(p+q)}{2}}$\;
-    MergeSort(A,p,r)\;
-    MergeSort(A,r+1,q)\;
-    Merge(A,p,q,r)\;
-}
-\end{algorithm}
-
-MergeSort è un algoritmo basato su ricorsione. Necessita della procedura Merge per unire i due vettori.
-
-\paragraph{Complessità Spaziale}: $\Theta(n)$ in quanto richiede un vettore di appoggio di dimensione n.
-
-\paragraph{Complessità Temporale}: $\Theta(n \log n)$ in quanto il vettore viene diviso in due parti e
-ogni parte viene ordinata in $\log n$ passi.
 
 \hypertarget{buildmaxheap}{}\subsection{Build-Max-Heap (array)} %%%%%%%%% BUILD MAX HEAP %%%%%%%%%
 Date n chiavi memorizzate in un array, voglio trasformare l'array in una max-heap.
@@ -321,7 +349,7 @@ Date n chiavi memorizzate in un array, voglio trasformare l'array in una max-hea
 \KwIn{Array $H$}
 \KwOut{Max-heap $H$}
 $H.heapsize \leftarrow H.length$\;
-\For{$i \leftarrow \floor{\frac{H.length}{2}}$ downto 1}{
+\For{$\displaystyle i \leftarrow \floor{\frac{H.length}{2}}$ downto 1}{
     Heapify(H,i)\;
 }
 \end{algorithm}
@@ -352,18 +380,35 @@ $r \leftarrow$ right(i)\;
 \end{algorithm}
 
 \paragraph{Complessità Spaziale}: 
-\paragraph{Complessità Temporale}:
+\paragraph{Complessità Temporale}: generalmente la complessità è $O(n)$, nel caso peggiore $\Theta(n)$
+
+$T(h) =\begin{cases}
+    \Theta(1) \ se \ h = 0 \\
+    T(h-1) \ + \ \Theta(1) \ se \ h > 0 \\
+\end{cases}$
 \paragraph{Correttezza}:
 
+\hypertarget{extractmaxheap}{}\subsection{Extract-Max-Heap} %%%%%%%%%% EXTRACT MAX HEAP %%%%%%%%%
 
-
+\begin{algorithm}[H]
+\caption{Extract-Max-Heap}
+\KwIn{Heap $H$}
+\KwOut{Max-heap $H$}
+scambia(H,1,H.heapsize)\;
+H.heapsize $\leftarrow$ H.heapsize - 1\;
+\If{$H.heapsize \geq 1$}{
+Heapify(H,1)\;
+}
+return H[H.heapsize + 1]\;
+\end{algorithm}
+    
 \hypertarget{heapsort}{}\subsection{Heap Sort} %%%%%%%%%%%% HEAP SORT %%%%%%%%%%%%%
+Algoritmo per ordinare n chiavi in ordine crescente usando una max heap. L'idea è di costruire una max heap estraendo il massimo e ripetendo il procedimento.
 
 
 \hypertarget{quicksort}{}\subsection{Quick Sort} %%%%%%%%%%%% QUICK SORT %%%%%%%%%%%%%
-Ho un vettore da ordinare, scelgo un elemento che fa da perno e divido 
-il vettore in due parti, uno contenente 
-elementi minori del perno e uno con elementi maggiori.
+Ho un vettore da ordinare, scelgo un elemento che fa da perno e divido il vettore in due parti, uno contenente 
+elementi minori del perno e uno con elementi maggiori. Partition serve a trovare il perno e a dividere il vettore in due parti.
 
 \begin{algorithm}[H]
 \caption{QuickSort}
@@ -376,12 +421,64 @@ elementi minori del perno e uno con elementi maggiori.
 }
 \end{algorithm}
 
+\paragraph{Complessità temporale}: caso peggiore $\Theta(n^2)$, caso medio $\Theta(n \log n)$
 
+$T(n)\begin{cases}
+    \Theta(1) \ se \ n \leq 1\\
+    T(m) + T(m-n-1) + \Theta(n) \ se \ n > 1\\
+\end{cases}$
 
-
+\paragraph{complessità spaziale:} l'algoritmo NON è inplace e NON è stabile.
 
 \hypertarget{partition}{\subsection{Partition}} %%%%%%%%%%%% PARTITION %%%%%%%%%%%%%
-\hypertarget{selection}{\subsection{Selection}} %%%%%%%%%%%% SELECTION %%%%%%%%%%%%%
+\paragraph{idea:} prendo ultimo elemento come perno. 
+
+\begin{algorithm}[H]
+\caption{Partition}
+\KwIn{Array $A$, indice $p$, indice $q$}
+\KwOut{Pivot index $i$}
+$x \leftarrow$ A[q] \;
+$i \leftarrow p-1$\;
+\For{$j \leftarrow p$ to  q}{
+    \If{$A[j] \leq x$}{
+    $i \leftarrow i+1$\;
+    scambia (A,i,j)\;
+    }
+    }
+    return $i$\;
+
+\end{algorithm}
+
+\paragraph{Complessità temporale}: $\Theta(n)$ in quanto si tratta di un ciclo for per $n$ elementi.
+
+\hypertarget{selection}{}\subsection{Selection} %%%%%%%%%%%% SELECTION %%%%%%%%%%%%%
+Utilizzo del perno ottimale per partition, in questo modo l'ordinamento è sempre efficiente
+
+
+\hypertarget{select}{}\subsection{Select} %%%%%%%%%%%% SELECT %%%%%%%%%%%%%
+Dato un vettire A di lunghezza $n$ e dato $i \in [1,...,n]$, determinare l'elemento che finirebbe in posizione i-esima se ordinassi A. 
+
+\begin{algorithm}[H]
+\caption{Select}
+\KwIn{Array $A$, indice $p$, indice $q$, indice $i$}
+\KwOut{Elemento $x$}
+\eIf{$p = q$}{
+    return A[p]\;
+}{
+    $r \leftarrow Partition(A,p,q,)$\;
+    \If{i = r}{
+        return A[r]\;
+    }
+    \ElseIf{i < r}{
+        return Select(A,p,r-1,i)\;
+    }
+    \Else{
+        return Select(A,r+1,q,i-k)\;
+    }
+}
+\end{algorithm}
+\paragraph{idea:} Bisogna trovare un buon perno.
+
 \section{Algoritmi di ordinamento non basati su scambi e confronti}
 \hypertarget{countingsort}{\subsection{Counting Sort}} %%%%%%%%%%%% COUNTING SORT %%%%%%%%%%%%%
 Richiede delle ipotesi sulle chiavi, ovvero che siano intere e comprese tra 0 e k, con \textbf{$k \in O(n)$}. Una nota importante è 
@@ -420,11 +517,15 @@ algoritmo di ordinamento stabile su una sola cifra. (es. counting sort).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRUTTURE DATI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Strutture Dati}
 \section{strutture dati lineari} %%% STRUTTURE DATI LINEARI %%%
-\subsection{Array} %%%%%%%%%%%%%% ARRAY %%%
+\subsection{Array} %%%%%%%%%%%%%% ARRAY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 struttura dati \textbf{statica} (= suo spazio di memoria non varia) di n elementi. 
 Sono a \textbf{indirizzamento diretto} e l'accesso ha un costo fisso di $\Theta (1)$
+\paragraph{operazioni e costo}:
+\begin{itemize}
+    \item \textbf{accesso e modifica}: $A[i]$, costo $\Theta(1)$
+\end{itemize}
 
-\subsection{Lista} %%%%%%%%%%%% LISTA %%%
+\subsection{Lista} %%%%%%%%%%%% LISTA %%%%%%%%%%%%%%%%%%%%
 Le liste sono strutture dati \textbf{dinamiche} (= il loro spazio di memoria può variare). 
 Possono occupare spazi di
  memoria non contigui. Tra le operazioni che vogliamo fare con le liste ci sono:
@@ -442,7 +543,30 @@ e \textbf{pull} hanno complessità $\Theta(1)$ in quanto conta soltanto la cella
 \subsection{Pila} %%%%%%%%%%%%% PILA %%%
 La pila è una struttura dati \textbf{dinamica} che permette di inserire \textbf{(push)} e cancellare \textbf{(pull)}
  elementi con politica \textbf{LIFO} (Last In First Out).
+\subsection{Code di priorità} %%%%%%%%%%% CODE DI PRIORITA %%%
+Sono strutture dati \textbf{sequenziali} e \textbf{dinamiche} i cui elementi sono gestiti con politica \textbf{HPFO} (Highest Priority First Out).
+ Ogni elemento è dotato di una key ma anche di una priorità.
+\begin{itemize}
+    \item vettori sovradimensionati
+    \item liste concatenate
+    \item vettori sovradimensionati ordinato per priorità
+\end{itemize}
+Il tipo di implementazione influisce sulla complessità delle operazioni.
+\begin{itemize}
 
+\item implementazione tramite \textbf{lista concatenata}: 
+\begin{itemize}
+    \item \textbf{inserimento} chiave $k$ in posizione $h$: costo $O(n)$, caso peggiore $\Theta(n)$
+    \item inserimento (\textbf{push}) e cancellazione(\textbf{pop}) di $k$ \textbf{in testa}: costo $\Theta(1)$ 
+    \item \textbf{ricerca} dell'h-esimo elemento: costo $O(n)$, caso peggiore $\Theta(n)$
+\end{itemize}
+\item implementazione tramite \textbf{vettore sovradimensionato}:
+\begin{itemize}
+    \item \textbf{normale:} inserimento costo $O(n)$, peggiore $\Theta(n)$
+    \item \textbf{ordinato per priorità:} cancellazione $\Theta(1)$, inserimento $\Theta(n)$
+    \item \textbf{heap} cancellazione e inserimento con $O(\log n)$
+\end{itemize}
+\end{itemize}
 \subsection{Albero Binario} %%%%%%%%%%%%%% ALBERO BINARIO %%%
 Struttura dati \textbf{dinamica} costituita da nodi aventi i seguenti campi:
 \begin{itemize}
@@ -463,20 +587,20 @@ riempito da sinistra a destra.
 alla scelta dell'altezza delle foglie, che può essere 0 o 1. Nel nostro caso sarà 0. 
 Un albero può avere altezza massima $n-1$.
 
-\subsection{Code di priorità} %%%%%%%%%%% CODE DI PRIORITA %%%
-Sono strutture dati \textbf{sequenziali} e \textbf{dinamiche} i cui elementi sono gestiti con politica \textbf{HPFO} (Highest Priority First Out).
- Ogni elemento è dotato di una key ma anche di una priorità.
-\begin{itemize}
-    \item vettori sovradimensionati
-    \item liste concatenate
-    \item vettori sovradimensionati ordinato per priorità
-\end{itemize}
+
 
 \subsection{Max-Heap} %%%%%%%%%%%%%%%% HEAP %%%
 \paragraph{Heap:} Ci permettono di implementare code con priorità costo di inserimento e cancellazione pari a $O(\log n)$.
 
 \paragraph{Max-Heap:} è un albero binario completo in cui ogni elemento ha una chiave minore o uguale di quella 
 del proprio genitore.
+
+\paragraph{costruzione (rivedere):} posso costruire una max heap tramite diversi metodi:
+\begin{itemize}
+    \item da H inserisco una per una le chiavi in K con insert-mex-heap
+    \item tramite Merge-Sort ordino al contrario, in questo modo ottengo una max-heap ($\Theta(n \log n)$)
+    \item sfrutto Heapify per trasformare un array in una max-heap $O(n \log n)$
+\end{itemize}
 
 \paragraph{proprietà} 
 Data una max-heap di n nodi:
@@ -531,5 +655,13 @@ voglio gestire le code di priorità, pertanto:
     
 \end{tabbing}
 
+\part{Esercizi e sfide}
+\section{esercizi scrittura di algoritmi}
+\section{equazioni ricorsive}
+\section{esercizi di induzione e correttezza}
+\section{sfide}
+\subsection{Possibility Majority Candidate}
+\subsection{Liste Circolari}
+\subsection{Matrice}
 
 \end{document}
