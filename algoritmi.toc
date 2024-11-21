@@ -41,53 +41,57 @@
 \contentsline {subsection}{\numberline {6.3}Merge}{12}{subsection.6.3}%
 \contentsline {paragraph}{procedura:}{12}{section*.27}%
 \contentsline {paragraph}{complessità temporale:}{12}{section*.28}%
-\contentsline {subsection}{\numberline {6.4}Build-Max-Heap (array)}{13}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.4}Build-Heap (array)}{13}{subsection.6.4}%
 \contentsline {subsection}{\numberline {6.5}Heapify (array)}{13}{subsection.6.5}%
 \contentsline {paragraph}{Complessità Spaziale}{13}{section*.29}%
 \contentsline {paragraph}{Complessità Temporale}{13}{section*.30}%
 \contentsline {paragraph}{Correttezza}{13}{section*.31}%
 \contentsline {subsection}{\numberline {6.6}Extract-Max-Heap}{14}{subsection.6.6}%
 \contentsline {subsection}{\numberline {6.7}Heap Sort}{14}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Quick Sort}{14}{subsection.6.8}%
 \contentsline {paragraph}{Complessità temporale}{14}{section*.32}%
-\contentsline {paragraph}{complessità spaziale:}{14}{section*.33}%
-\contentsline {subsection}{\numberline {6.9}Partition}{14}{subsection.6.9}%
-\contentsline {paragraph}{idea:}{14}{section*.34}%
-\contentsline {paragraph}{Complessità temporale}{15}{section*.35}%
+\contentsline {subsection}{\numberline {6.8}Quick Sort}{14}{subsection.6.8}%
+\contentsline {paragraph}{Complessità temporale}{15}{section*.33}%
+\contentsline {paragraph}{complessità spaziale:}{15}{section*.34}%
+\contentsline {subsection}{\numberline {6.9}Partition}{15}{subsection.6.9}%
+\contentsline {paragraph}{idea:}{15}{section*.35}%
+\contentsline {paragraph}{Complessità temporale}{15}{section*.36}%
 \contentsline {subsection}{\numberline {6.10}Selection}{15}{subsection.6.10}%
 \contentsline {subsection}{\numberline {6.11}Select}{15}{subsection.6.11}%
-\contentsline {paragraph}{idea:}{15}{section*.36}%
+\contentsline {paragraph}{idea:}{16}{section*.37}%
 \contentsline {section}{\numberline {7}Algoritmi di ordinamento non basati su scambi e confronti}{16}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Counting Sort}{16}{subsection.7.1}%
-\contentsline {paragraph}{Complessità temporale}{16}{section*.37}%
-\contentsline {paragraph}{Complessità spaziale}{16}{section*.38}%
-\contentsline {subsection}{\numberline {7.2}Radix Sort}{16}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Bucket Sort}{16}{subsection.7.3}%
-\contentsline {part}{III\hspace {1em}Strutture Dati}{17}{part.3}%
-\contentsline {section}{\numberline {8}strutture dati lineari}{17}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Array}{17}{subsection.8.1}%
-\contentsline {paragraph}{operazioni e costo}{17}{section*.39}%
-\contentsline {subsection}{\numberline {8.2}Lista}{17}{subsection.8.2}%
-\contentsline {paragraph}{liste concatenate}{17}{section*.40}%
-\contentsline {subsection}{\numberline {8.3}Pila}{17}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Code di priorità}{17}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Albero Binario}{18}{subsection.8.5}%
-\contentsline {paragraph}{albero binario completo:}{18}{section*.41}%
-\contentsline {paragraph}{albero binario quasi completo:}{18}{section*.42}%
-\contentsline {paragraph}{altezza di un nodo:}{18}{section*.43}%
-\contentsline {subsection}{\numberline {8.6}Max-Heap}{18}{subsection.8.6}%
-\contentsline {paragraph}{Heap:}{18}{section*.44}%
-\contentsline {paragraph}{Max-Heap:}{18}{section*.45}%
-\contentsline {paragraph}{costruzione (rivedere):}{19}{section*.46}%
-\contentsline {paragraph}{proprietà}{19}{section*.47}%
-\contentsline {paragraph}{operazioni:}{19}{section*.48}%
-\contentsline {paragraph}{implementazione:}{19}{section*.49}%
-\contentsline {paragraph}{procedure di base:}{19}{section*.50}%
-\contentsline {part}{IV\hspace {1em}Esercizi e sfide}{19}{part.4}%
-\contentsline {section}{\numberline {9}esercizi scrittura di algoritmi}{20}{section.9}%
-\contentsline {section}{\numberline {10}equazioni ricorsive}{20}{section.10}%
-\contentsline {section}{\numberline {11}esercizi di induzione e correttezza}{20}{section.11}%
-\contentsline {section}{\numberline {12}sfide}{20}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Possibility Majority Candidate}{20}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Liste Circolari}{20}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Matrice}{20}{subsection.12.3}%
+\contentsline {subsection}{\numberline {7.1}Breve intro}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Counting Sort}{16}{subsection.7.2}%
+\contentsline {paragraph}{Complessità temporale}{17}{section*.38}%
+\contentsline {paragraph}{Complessità spaziale}{17}{section*.39}%
+\contentsline {subsection}{\numberline {7.3}Radix Sort}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Bucket Sort}{17}{subsection.7.4}%
+\contentsline {part}{III\hspace {1em}Strutture Dati}{18}{part.3}%
+\contentsline {section}{\numberline {8}strutture dati lineari}{18}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Array}{18}{subsection.8.1}%
+\contentsline {paragraph}{operazioni e costo}{18}{section*.40}%
+\contentsline {subsection}{\numberline {8.2}Lista}{18}{subsection.8.2}%
+\contentsline {paragraph}{liste concatenate}{18}{section*.41}%
+\contentsline {subsection}{\numberline {8.3}Pila}{18}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Code di priorità}{18}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Albero Binario}{19}{subsection.8.5}%
+\contentsline {paragraph}{albero binario completo:}{19}{section*.42}%
+\contentsline {paragraph}{albero binario quasi completo:}{19}{section*.43}%
+\contentsline {paragraph}{altezza di un nodo:}{19}{section*.44}%
+\contentsline {subsection}{\numberline {8.6}Max-Heap}{19}{subsection.8.6}%
+\contentsline {paragraph}{Heap:}{19}{section*.45}%
+\contentsline {paragraph}{Max-Heap:}{19}{section*.46}%
+\contentsline {paragraph}{costruzione (rivedere):}{20}{section*.47}%
+\contentsline {paragraph}{proprietà}{20}{section*.48}%
+\contentsline {paragraph}{operazioni:}{20}{section*.49}%
+\contentsline {paragraph}{implementazione:}{20}{section*.50}%
+\contentsline {paragraph}{procedure di base:}{20}{section*.51}%
+\contentsline {subsection}{\numberline {8.7}Tabelle di Hash}{21}{subsection.8.7}%
+\contentsline {paragraph}{problema:}{21}{section*.52}%
+\contentsline {part}{IV\hspace {1em}Esercizi e sfide}{21}{part.4}%
+\contentsline {section}{\numberline {9}esercizi scrittura di algoritmi}{21}{section.9}%
+\contentsline {section}{\numberline {10}equazioni ricorsive}{21}{section.10}%
+\contentsline {section}{\numberline {11}esercizi di induzione e correttezza}{21}{section.11}%
+\contentsline {section}{\numberline {12}sfide}{21}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Possibility Majority Candidate}{21}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Liste Circolari}{21}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Matrice}{21}{subsection.12.3}%

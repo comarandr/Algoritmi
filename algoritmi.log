@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.10.22)  20 NOV 2024 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.10.22)  21 NOV 2024 19:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -402,39 +402,42 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `algoritmi.toc'.
 
  [3] [4] [5] [6] [7] [8]
-Overfull \hbox (13.48009pt too wide) in paragraph at lines 207--225
+Overfull \hbox (13.35234pt too wide) in paragraph at lines 207--225
 [] 
  []
 
-[9] [10] [11] [12] [13] [14] [15] [16] [17]
-Overfull \hbox (3.10388pt too wide) in paragraph at lines 598--599
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
+Overfull \hbox (3.10388pt too wide) in paragraph at lines 640--641
  []\T1/cmr/bx/n/10 costruzione (rivedere):[] \T1/cmr/m/n/10 posso costru-ire una max heap tramite di-versi metodi: 
  []
 
-[18]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 633.
+[19]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 675.
  (C:\Users\comar\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [19] [20] (algoritmi.aux)
+) [20] [21] (algoritmi.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `algoritmi.out' has not changed.
-(rerunfilecheck)             Checksum: E8D3C6F77CF403FE4C4EE7C86B48CA01;6647.
+(rerunfilecheck)             Checksum: 16E2AA71B82B1F0C774C60F13E7781F8;6882.
  ) 
 Here is how much of TeX's memory you used:
- 13466 strings out of 474486
- 206322 string characters out of 5743754
+ 13482 strings out of 474486
+ 206500 string characters out of 5743754
  1945542 words of memory out of 5000000
- 35411 multiletter control sequences out of 15000+600000
- 572616 words of font info for 74 fonts, out of 8000000 for 9000
+ 35416 multiletter control sequences out of 15000+600000
+ 573543 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,445b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on algoritmi.pdf (20 pages, 291179 bytes).
+ 75i,16n,79p,445b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{buildmaxheap} has been referenced but does not exist, replaced by a fixed one
+
+ <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\comar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/comar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on algoritmi.pdf (21 pages, 308363 bytes).
 PDF statistics:
- 885 PDF objects out of 1000 (max. 8388607)
- 167 named destinations out of 1000 (max. 500000)
- 353 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 913 PDF objects out of 1000 (max. 8388607)
+ 175 named destinations out of 1000 (max. 500000)
+ 369 words of extra memory for PDF output out of 10000 (max. 10000000)
 

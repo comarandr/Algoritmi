@@ -213,7 +213,7 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
     \hyperlink{mergesort}{\textbf{Merge Sort}}& $\Theta(n \log n)$ & $\Theta(n \log n)$ & & non inplace\\
     \hyperlink{heapify}{Heapify} & $O(\log n)$ & & & \\
     \hyperlink{buildmaxheap}{Build Max Heap} & $\Theta(n)$ & & & inplace \\ 
-    \hyperlink{heapsort}{\textbf{Heap Sort}} & $O(n \log n)$ & & non stabile & \\
+    \hyperlink{heapsort}{\textbf{Heap Sort}} & $\Theta(n \log n)$ & $\Theta(n)$ ripetizioni & non stabile & inplace\\
     \hyperlink{quicksort}{Quick Sort} & $\Theta(n^2)$ & $\Theta(n \log n)$ & non stabile &non inplace \\
     \hyperlink{selection}{Selection Sort} & $\Theta(n^2)$ & & & \\
     \hyperlink{countingsort}{Counting Sort} & $\Theta(n^2)$  & $\Theta(n+k)$, $k \in O$(n) & stabile & non inplace\\    
@@ -246,6 +246,7 @@ Soluzioni:
     \begin{algorithm}[H] 
         \caption{InsertionSort\label{IR}}
         \KwData{A array, i indice, j indice}
+        \Begin{
         \For{ i $\leftarrow$ 2 to A.length }{
             key $\leftarrow$ A[i]\;
             j $\leftarrow$ j - 1\;
@@ -254,6 +255,7 @@ Soluzioni:
                 j $\leftarrow$ j - 1 \;
             }
             A[j+1] $\leftarrow$ key\;
+        }
         }
         \end{algorithm}
 
@@ -279,11 +281,13 @@ mediante la procedura \hyperlink{merge}{Merge}
 \caption{MergeSort}
 \KwIn{Array $A$, indices $p$, $q$}
 \KwOut{Sorted array $A[p..q]$}
+\Begin{
 \If{$p < q$}{
     $r \leftarrow \floor{\frac{(p+q)}{2}}$\;
     MergeSort(A,p,r)\;
     MergeSort(A,r+1,q)\;
     Merge(A,p,q,r)\;
+}
 }
 \end{algorithm}
 
@@ -306,6 +310,7 @@ Si basa sul confronto tra i valori più piccoli delle due sottosezioni, operazio
 \caption{Merge}
 \KwIn{Array $A$, indices $p$, $r$, $q$}
 \KwOut{Merged array $A[p..q]$}
+\Begin{
 $i \leftarrow p$\;
 $j \leftarrow r + 1$\;
 $B \leftarrow$ new array of size $q - p + 1$\;
@@ -332,6 +337,7 @@ $k \leftarrow 1$\;
         $k \leftarrow k + 1$\;
     }
 }
+}
 \end{algorithm}
 \paragraph{procedura:}
 La procedura Merge si basa sul \textbf{confrontare} i primi due valori delle rispettive sottosezioni (ovvero i \textbf{valori più piccoli}), inserirendo il minore in un vettore di appoggio B. L'elemento maggiore dei due viene 
@@ -341,16 +347,18 @@ Il procedimento viene effettuato tramite due indici $i$ e $j$.
 \paragraph{complessità temporale:} $\Theta(n)$ in quanto ogni elemento viene confrontato una sola volta, proprietà che deriva dal fatto che sono ordinate.
 
 
-\hypertarget{buildmaxheap}{}\subsection{Build-Max-Heap (array)} %%%%%%%%% BUILD MAX HEAP %%%%%%%%%
+\hypertarget{builheap}{}\subsection{Build-Heap (array)} %%%%%%%%% BUILD HEAP %%%%%%%%%
 Date n chiavi memorizzate in un array, voglio trasformare l'array in una max-heap.
 
 \begin{algorithm}[H]
 \caption{Build-Max-Heap}
 \KwIn{Array $H$}
 \KwOut{Max-heap $H$}
+\Begin{
 $H.heapsize \leftarrow H.length$\;
 \For{$\displaystyle i \leftarrow \floor{\frac{H.length}{2}}$ downto 1}{
     Heapify(H,i)\;
+}
 }
 \end{algorithm}
 
@@ -362,7 +370,8 @@ Procedura che serve a trasformare una heap in una max-heap. \newline
 \begin{algorithm}[H]
 \caption{Heapify}
 \KwIn{Heap $H$, indice $i$}
-\KwOut{Max-heap $H$}  
+\KwOut{Max-heap $H$}
+\Begin{
 $l \leftarrow$ left(i)\;
 $r \leftarrow$ right(i)\;
 \eIf{$l \leq H.heapsize$ \&\& $H[l] > H[i]$}{
@@ -376,6 +385,7 @@ $r \leftarrow$ right(i)\;
 \If{$m \neq i$}{
     scambia (H,i,m) \;
     Heapify(H,m)\;
+}
 }
 \end{algorithm}
 
@@ -394,17 +404,37 @@ $T(h) =\begin{cases}
 \caption{Extract-Max-Heap}
 \KwIn{Heap $H$}
 \KwOut{Max-heap $H$}
+\Begin{
 scambia(H,1,H.heapsize)\;
 H.heapsize $\leftarrow$ H.heapsize - 1\;
 \If{$H.heapsize \geq 1$}{
 Heapify(H,1)\;
 }
 return H[H.heapsize + 1]\;
+}
 \end{algorithm}
+
+
     
 \hypertarget{heapsort}{}\subsection{Heap Sort} %%%%%%%%%%%% HEAP SORT %%%%%%%%%%%%%
 Algoritmo per ordinare n chiavi in ordine crescente usando una max heap. L'idea è di costruire una max heap estraendo il massimo e ripetendo il procedimento.
+\begin{algorithm}[H]
+\caption{HeapSort}
+\KwIn{Array $A$}
+\KwOut{Sorted array $A$}
+\Begin{
+Build-Max-Heap(A)\;
+\For{$i \leftarrow A.length$ downto 2}{
+    scambia(A,1,i)\;
+    A.heapsize $\leftarrow$ A.heapsize - 1\;
+    Heapify(A,1)\;
+}
+}
+\end{algorithm}
 
+Notiamo come l'algoritmo sia una sorta di fusione tra BuildHeap e Extract Max Heap.
+
+\paragraph{Complessità temporale}: $O(n \log n)$, con caso peggiore $\Theta(n \log n)$ e caso migliore $\Theta(n)$ quando sono presenti \textbf{molte ripetizioni}. 
 
 \hypertarget{quicksort}{}\subsection{Quick Sort} %%%%%%%%%%%% QUICK SORT %%%%%%%%%%%%%
 Ho un vettore da ordinare, scelgo un elemento che fa da perno e divido il vettore in due parti, uno contenente 
@@ -414,10 +444,12 @@ elementi minori del perno e uno con elementi maggiori. Partition serve a trovare
 \caption{QuickSort}
 \KwIn{Array $A$, indice $p$, indice $q$}
 \KwOut{Sorted array $A[p..q]$}
+\Begin{
 \If{$p < q$}{
     $r \leftarrow Partition(A,p,q)$\;
     QuickSort(A,p,r-1)\;
     QuickSort(A,r+1,q)\;
+}
 }
 \end{algorithm}
 
@@ -437,6 +469,7 @@ $T(n)\begin{cases}
 \caption{Partition}
 \KwIn{Array $A$, indice $p$, indice $q$}
 \KwOut{Pivot index $i$}
+\Begin{
 $x \leftarrow$ A[q] \;
 $i \leftarrow p-1$\;
 \For{$j \leftarrow p$ to  q}{
@@ -446,7 +479,7 @@ $i \leftarrow p-1$\;
     }
     }
     return $i$\;
-
+}
 \end{algorithm}
 
 \paragraph{Complessità temporale}: $\Theta(n)$ in quanto si tratta di un ciclo for per $n$ elementi.
@@ -462,6 +495,7 @@ Dato un vettire A di lunghezza $n$ e dato $i \in [1,...,n]$, determinare l'eleme
 \caption{Select}
 \KwIn{Array $A$, indice $p$, indice $q$, indice $i$}
 \KwOut{Elemento $x$}
+\Begin{
 \eIf{$p = q$}{
     return A[p]\;
 }{
@@ -476,12 +510,18 @@ Dato un vettire A di lunghezza $n$ e dato $i \in [1,...,n]$, determinare l'eleme
         return Select(A,r+1,q,i-k)\;
     }
 }
+}
 \end{algorithm}
 \paragraph{idea:} Bisogna trovare un buon perno.
 
 \section{Algoritmi di ordinamento non basati su scambi e confronti}
+
+\subsection{Breve intro}
+Ogni algoritmo di ordinamento \textbf{basato su scambi e confronti} nel \textbf{caso peggiore} ha complessità pari a $\mathbf{\Omega(n \ log \ n)}$. 
+È possibile ridurre la complessità introducendo delle ipotesi dull'input che permettano l'utilizzo di algoritmi di ordinamento non basati su confronti.
+
 \hypertarget{countingsort}{\subsection{Counting Sort}} %%%%%%%%%%%% COUNTING SORT %%%%%%%%%%%%%
-Richiede delle ipotesi sulle chiavi, ovvero che siano intere e comprese tra 0 e k, con \textbf{$k \in O(n)$}. Una nota importante è 
+Richiede delle \textbf{ipotesi sulle chiavi}(i valori assunti), ovvero che siano intere e comprese tra 0 e k, con \textbf{$k \in O(n)$}. Una nota importante è 
 che \textit{k non è necessariamente una costante}. Anche valori come $k = \frac{n}{2}$, $k = 10 \cdot n$, $k = \log n$ sono validi.
 
 
@@ -489,6 +529,7 @@ che \textit{k non è necessariamente una costante}. Anche valori come $k = \frac
 \caption{CountingSort}
 \KwIn{Array $A$, Array $B$, $k$}
 \KwOut{Sorted array $A$}
+\Begin{
 C $\leftarrow$ new array of size $k+1$\; 
 \For{j $\leftarrow$ 0 to k}{
     C[j] $\leftarrow$ 0\;
@@ -502,6 +543,7 @@ C $\leftarrow$ new array of size $k+1$\;
 \For{i $\leftarrow$ A.length down to 1}{
     B[C[A[i]]] $\leftarrow$ A[i]\;
     C[A[i]] $\leftarrow$ C[A[i]] - 1\;
+}
 }
 \end{algorithm}
 \paragraph{Complessità temporale}: $\Theta(n+k)$ se ho per ipotesi che $k = O(n)$. Allora per possiamo ignorare i termini di ordine inferiore e otteniamo $\Theta(n)$.
@@ -654,6 +696,9 @@ voglio gestire le code di priorità, pertanto:
 \end{lstlisting}
     
 \end{tabbing}
+
+\subsection{Tabelle di Hash} %%%%%%%%%%%%%%%% TABELLE DI HASH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{problema:} dato un insieme $U$ di elementi identificati da chavi, voglio memorizzare un sottoinsieme $k \subseteq U$ che \textbf{varia dinamicamente} nel tempo.
 
 \part{Esercizi e sfide}
 \section{esercizi scrittura di algoritmi}
