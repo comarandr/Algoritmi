@@ -85,13 +85,36 @@
 \contentsline {paragraph}{operazioni:}{20}{section*.49}%
 \contentsline {paragraph}{implementazione:}{20}{section*.50}%
 \contentsline {paragraph}{procedure di base:}{20}{section*.51}%
-\contentsline {subsection}{\numberline {8.7}Tabelle di Hash}{21}{subsection.8.7}%
-\contentsline {paragraph}{problema:}{21}{section*.52}%
-\contentsline {part}{IV\hspace {1em}Esercizi e sfide}{21}{part.4}%
-\contentsline {section}{\numberline {9}esercizi scrittura di algoritmi}{21}{section.9}%
-\contentsline {section}{\numberline {10}equazioni ricorsive}{21}{section.10}%
-\contentsline {section}{\numberline {11}esercizi di induzione e correttezza}{21}{section.11}%
-\contentsline {section}{\numberline {12}sfide}{21}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Possibility Majority Candidate}{21}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Liste Circolari}{21}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Matrice}{21}{subsection.12.3}%
+\contentsline {subsection}{\numberline {8.7}Tabelle di Hash}{20}{subsection.8.7}%
+\contentsline {paragraph}{problema:}{20}{section*.52}%
+\contentsline {paragraph}{implementazione:}{21}{section*.53}%
+\contentsline {paragraph}{operazioni:}{21}{section*.54}%
+\contentsline {paragraph}{implementazione:}{21}{section*.55}%
+\contentsline {subsection}{\numberline {8.8}Tabelle di Hash con Chaining}{21}{subsection.8.8}%
+\contentsline {paragraph}{idea:}{21}{section*.56}%
+\contentsline {paragraph}{funzione di Hash:}{21}{section*.57}%
+\contentsline {paragraph}{collisioni}{21}{section*.58}%
+\contentsline {paragraph}{implementazione efficiente:}{21}{section*.59}%
+\contentsline {paragraph}{teorema:}{22}{section*.60}%
+\contentsline {paragraph}{ipotesi di hashing uniforme semplice:}{22}{section*.61}%
+\contentsline {subsection}{\numberline {8.9}funzioni di Hash}{22}{subsection.8.9}%
+\contentsline {paragraph}{caratteristiche:}{22}{section*.62}%
+\contentsline {paragraph}{metodo della divisione:}{22}{section*.63}%
+\contentsline {paragraph}{metodo bucketsort:}{22}{section*.64}%
+\contentsline {paragraph}{metodo universale:}{22}{section*.65}%
+\contentsline {subsection}{\numberline {8.10}Tabelle di Hash con Open Addressing}{23}{subsection.8.10}%
+\contentsline {paragraph}{funzione di Hash:}{23}{section*.66}%
+\contentsline {paragraph}{proprietà:}{23}{section*.67}%
+\contentsline {paragraph}{costi delle operazioni (inserimento, ricerca, cancellazione):}{23}{section*.68}%
+\contentsline {paragraph}{ipotesi di hashing uniforme:}{23}{section*.69}%
+\contentsline {subsection}{\numberline {8.11}Tipologie di scansione}{23}{subsection.8.11}%
+\contentsline {paragraph}{scansione lineare:}{23}{section*.70}%
+\contentsline {part}{IV\hspace {1em}Esercizi e sfide}{23}{part.4}%
+\contentsline {section}{\numberline {9}esercizi scrittura di algoritmi}{24}{section.9}%
+\contentsline {section}{\numberline {10}equazioni ricorsive}{24}{section.10}%
+\contentsline {paragraph}{costo:}{24}{section*.71}%
+\contentsline {section}{\numberline {11}esercizi di induzione e correttezza}{24}{section.11}%
+\contentsline {section}{\numberline {12}sfide}{24}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Possibility Majority Candidate}{24}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Liste Circolari}{24}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Matrice}{24}{subsection.12.3}%

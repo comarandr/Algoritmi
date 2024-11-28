@@ -699,10 +699,172 @@ voglio gestire le code di priorità, pertanto:
 
 \subsection{Tabelle di Hash} %%%%%%%%%%%%%%%% TABELLE DI HASH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{problema:} dato un insieme $U$ di elementi identificati da chavi, voglio memorizzare un sottoinsieme $k \subseteq U$ che \textbf{varia dinamicamente} nel tempo.
+\paragraph{implementazione:}Notiamo che |U| = M è un numero molto grande rispetto K = n. L'utilizzo di un vettore renderebbe le operazioni efficienti, ma comporterebbe un grosso quantitativo di spazio $\Theta(M)$. Il vettore dovrebbe 
+contenere tutti gli elementi di U, in quanto K varia. L'utilizzo 
+di una lista concatenata degli elementi di k ridurrebbe lo spazio ($\Theta(n)$), ma comporterebbe un costo per le operazioni di ricerca e cancellazione $O(n)$. Quello che vogliamo noi è:
+\paragraph{operazioni:}
+\begin{itemize}
+    \item \textbf{inserimento} di un elemento con costo medio $\Theta(1)$
+    \item \textbf{cancellazione} di un elemento con costo medio $\Theta(1)$
+    \item \textbf{ricerca} di un elemento con costo medio $\Theta(1)$
+\end{itemize}
+Il tutto con costo spaziale $\Theta(n)$.
 
-\part{Esercizi e sfide}
+\paragraph{implementazione:} due possibili implementazioni delle tabelle di Hash:
+\begin{itemize}
+    \item \textbf{chaining}, ovvero uso di vettore e liste concatenate
+    \item \textbf{open addressing}, ovvero uso di un vettore
+\end{itemize}
+
+\subsection{Tabelle di Hash con Chaining} %%%%%%%%%%%%%%%% TABELLE DI HASH CON CHAINING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{idea:} uso di un vettore T di dimensione m, in cui ogni cella contiene una lista concatenata di elementi.
+\paragraph{funzione di Hash:}
+\begin{itemize}
+    \item  $h: \{ 0,1,...,|U|-1 \} \rightarrow \{0,1,...,m-1\}$
+\end{itemize}
+L'elemento x viene inserito nella lista in $T[h(x.key)]$. Calcolare h(k) costa $\Theta(1)$.
+\paragraph{collisioni} Quando si verifica la seguente condizione:
+\begin{itemize}
+    \item $x \neq y \in U$ con $h(x.key) = h(y.key)$
+\end{itemize}
+Entrambe gli elementi vengono inseriti nella stessa lista concatenata, indirizzata dalla rispettiva cella in T. Ovviamente ogni 
+nuovo elemento viene inserito in testa alla lista. Questo garantisce $\Theta(1)$ per l'inserimento ma $O(m)$ per ricerca e rimozione.
+
+\paragraph{implementazione efficiente:} affinché le operazioni rispettino le ipotesi di costo $\Theta(1)$ nel caso medio, è necessario che le liste abbiano 
+mediamente la stessa lunghezza, ovvero dati |T| = m, |k| = n, allora la lunghezza media di ogni lista dovrebbe essere:
+\begin{itemize}
+\item $\displaystyle \alpha = \frac{n}{m}$, detto \textbf{fattore di carico}
+\end{itemize}
+
+\paragraph{teorema:} Se T è una tabella di Hash con chaining e vale l'ipotesi di hashing uniforme sempliceme, allora le operazioni di ricerca e cancellazione 
+hanno costo $\Theta(1 + \alpha)$ nel caso medio.
+
+\paragraph{ipotesi di hashing uniforme semplice:} ogni elemento di U ha la stessa probabilità di essere mappato in una qualsiasi delle m celle di T, se non conosco 
+x.key, ovvero 
+\begin{itemize}
+    \item $\forall \in [0,m-1]$ probabilità di $\displaystyle (h(x.key) = i) = \frac{1}{m}  $
+\end{itemize}
+
+dim(..)
+
+\subsection{funzioni di Hash} %%%%%%%%%%%%%%%% FUNZIONI DI HASH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item $h: \{ 0,1,...,|U|-1 \} \rightarrow \{0,1,...,m-1\}$
+\end{itemize}
+
+\paragraph{caratteristiche:}
+\begin{itemize}
+    \item \textbf{non iniettività}: in quanto due chiavi possono collidere
+    \item \textbf{suriettività}: in T non devono esserci celle non mappate
+    \item \textbf{uniformità}: ogni cella di T deve avere la stessa probabilità di essere mappata
+    \item controllo del dominio e del codominio
+\end{itemize}
+
+\paragraph{metodo della divisione:}
+\begin{itemize}
+    \item $h(key) = key \mod m$
+\end{itemize}
+
+suggerimenti: meglio che m sia un numero primo e lontano da una potenza di 2 (per migliore distribuzione)
+
+\paragraph{metodo bucketsort:} A[i] elementi vettore $\in$ [0,...1) distribuiti in modo uniforme. 
+$\floor{A[i] \cdot n} \in \{0,..., m-1\}$ B vettore di liste, con funzione:
+\begin{itemize}
+    \item $h(k) = \floor{k \cdot n}$
+\end{itemize}
+
+\paragraph{metodo universale:} generalizza il caso precedente per qualsiasi m, consideriamo $0 < A < 1$.
+\begin{itemize}
+    \item $h(k) = \floor{m \cdot (k \cdot A - \floor{k \cdot A})}$
+\end{itemize}
+Notiamo che $k \cdot A - \floor{k \cdot A}$ è la parte decimale di $k \cdot A$, in quanto $\floor{k \cdot A}$ è unicamente la parte intera.
+
+\subsection{Tabelle di Hash con Open Addressing} %%%%%%%%%%%%%%%% TABELLE DI HASH
+
+Tutti gli elementi vengono memorizzati in un vettore T di dimensione m. Le collisioni vengono risolte 
+tramite \textbf{sequenze di scansione}.
+
+\paragraph{funzione di Hash:} 
+\begin{itemize}
+    \item $h: \{ 0,1,...,|U|-1 \}$ x $\{0,1,...,m-1\}\rightarrow \{0,1,...,m-1\}$
+\end{itemize}
+
+il secondo argomento della funzione rappresenta il tentativo di inserimento.
+
+\paragraph{proprietà:} $\forall h(x.key, 0), h(x.key, 1), ... , h(x.key,m-1)$
+\begin{itemize}
+    \item \textbf{iniettiva}: ogni chiave viene mappata in una sola cella
+    \item \textbf{suriettiva}: ogni cella di T è mappata
+\end{itemize}
+In questo modo la funzione è \textbf{biettiva}, e rappresenta una \textbf{permutazione} di $\{0,1,...,m-1\}$.
+Per favorire la ricerca e la cancellazione, utilizzo due costanti per identificare le celle vuote:
+\begin{itemize}
+    \item \textbf{NIL}: cella mai usata
+    \item \textbf{DEL}: cella usata e svuotata, vale come occupata per ricerca/cancellazione
+\end{itemize}
+
+\paragraph{costi delle operazioni (inserimento, ricerca, cancellazione):}
+\begin{itemize}
+    \item \textbf{caso medio}: $\Theta(1)$ se vale ipotesi di \textbf{hashing uniforme}
+    \item \textbf{caso peggiore}: $\Theta(m)$
+\end{itemize}
+
+\paragraph{ipotesi di hashing uniforme:} tutte le possibili permutazioni di $\{0,1,...,m-1\}$ sono ugualmente probabili, ovvero $\displaystyle \frac{1}{m!}$, in quanto dati m elementi, 
+le possibili permutazioni sono $m!$
+
+\subsection{Tipologie di scansione}
+
+\paragraph{scansione lineare:}
+\begin{itemize}
+    \item $h(k,i) = (h(k) + i) \mod m$
+\end{itemize}
+Se una cella è occupata, si passa alla successiva. Non rispetta l'ipotesi di hashing uniforme, genera soltanto m possibili scansioni sulle m!
+
+\part{Esercizi e sfide} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{esercizi scrittura di algoritmi}
 \section{equazioni ricorsive}
+esercizi di equazioni ricorsive:
+
+$T(n)= \begin{cases}
+    \Theta(1) \ se \ n \leq 1\\
+    2T(\frac{n}{2}) + \Theta(1) \ se \ n > 1\\
+\end{cases}$
+
+Posso riscrivere l'equazione sostituendo $\Theta(1)$ con delle costanti, ottenendo:
+
+$T(n)= \begin{cases}
+    a \ se \ n \leq 1\\
+    2T(\frac{n}{2}) + b \ se \ n > 1\\
+\end{cases}$
+\\
+Tabella dei costi per livello:\\
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    numero nodi & dimensione nodo & costo unitario nodo & costo livello\\
+    \hline
+    1 & n & b & b\\
+    2 & $\frac{n}{2}$ & b & $2 \cdot b$\\
+    $2^2$ & $\frac{n}{2^2}$ & b & $2^2 \cdot b$\\
+    ... & ... & ... & ...\\
+    $2^i$ & $\frac{n}{2^i}$ & b & $2^i \cdot b$\\
+    ... & ... & ... & ...\\
+    $2^x$ & $\frac{n}{2^x}=1$ & a & $2^x \cdot a$\\
+    \hline
+\end{tabular}
+
+\paragraph{costo:} somma del costo dei livelli 
+
+$\displaystyle T(n) = b + 2 \cdot b + ... 2^i \cdot b + ... + 2^x \cdot a $
+
+$\displaystyle \frac{n}{2^x} = 1 \Rightarrow x = \log_2 n$
+
+$T(n) = \displaystyle \sum_{i=0}^{\log_2 n-1}2^i \cdot b + 2^{\log_2 n} \cdot a$
+
+ora opero sull'equazione 
+
+
+$T(n)= b ()$
+
 \section{esercizi di induzione e correttezza}
 \section{sfide}
 \subsection{Possibility Majority Candidate}
