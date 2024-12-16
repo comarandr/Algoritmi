@@ -439,6 +439,7 @@ Notiamo come l'algoritmo sia una sorta di fusione tra BuildHeap e Extract Max He
 \hypertarget{quicksort}{}\subsection{Quick Sort} %%%%%%%%%%%% QUICK SORT %%%%%%%%%%%%%
 Ho un vettore da ordinare, scelgo un elemento che fa da perno e divido il vettore in due parti, uno contenente 
 elementi minori del perno e uno con elementi maggiori. Partition serve a trovare il perno e a dividere il vettore in due parti.
+Utilizzo ricorsivamente partition per ordinare le due sottosezioni.
 
 \begin{algorithm}[H]
 \caption{QuickSort}
@@ -463,7 +464,9 @@ $T(n)\begin{cases}
 \paragraph{complessità spaziale:} l'algoritmo NON è inplace e NON è stabile.
 
 \hypertarget{partition}{\subsection{Partition}} %%%%%%%%%%%% PARTITION %%%%%%%%%%%%%
-\paragraph{idea:} prendo ultimo elemento come perno. 
+\paragraph{idea:} prendo l'ultimo elemento come perno e lo inserisco nella posizione corretta, posizionando tutti 
+gli elementi minori o uguali del perno a sinistra di quest'ultimo e quelli maggiori a destra. Restituisco l'indice 
+della posizione corretta del perno. Le due porzioni dell'array NON sono ordinate.
 
 \begin{algorithm}[H]
 \caption{Partition}
