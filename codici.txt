@@ -1,0 +1,7 @@
+Codici di Algoritmi
+
+InsertionSort (A){
+    for (i &rarr; to to A.length){
+        ley
+    }
+}

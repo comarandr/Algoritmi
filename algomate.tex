@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Concetti matematici}
+\author{Andrea}
+
+\begin{document}
+\section{Stime di somme}
+
+\begin{tabular}{|cc|}
+    \hline
+    \multicolumn{2}{|c|}{stima di somme}\\
+    \hline
+    & \\
+    Somma di Gauss & $\displaystyle \sum_{i=1}^{h} i = \frac{h(h+1)}{2}$ \\[0.6cm]
+    Somma di potenze con $k \geq 1$: & $\displaystyle \sum_{i=1}^{h} i^k \in O(h^{k+1})$ \\[0.6cm]
+    Somma di potenze con $k \leq 1$: & $ \displaystyle \sum_{i=1}^{h} i^k \in \Omega(h^{k+1})$\\[0.6cm]
+    Serie geometrica con $\rho \geq 1$: & $\displaystyle \sum_{i=0}^{+ \infty} \rho^i = + \infty$ \\[0.6cm]
+    Serie geometrica con $\rho < 1$: & $\displaystyle \sum_{i=0}^{+ \infty} \rho^i = \frac{1}{1-\rho}$ \\[0.6cm]
+    Somma parziale della serie geometrica: & $\displaystyle \sum_{i=0}^{h} \rho^i = \frac{1-\rho^{h+1}}{1-\rho} = \frac{\rho^{h+1}-1}{\rho-1}$ \\[0.6cm]
+    \hline
+\end{tabular}
+
+
+\section{Proprietà dei logaritmi}
+
+\begin{tabular}{|cc|}
+    \hline
+    \multicolumn{2}{|c|}{Proprietà dei logaritmi} \\
+    \hline
+    & \\
+    definizione: & $ a^{\log_a(b)} = b $ \\[0.4cm]
+    logaritmo del prodotto: & $\log_b(n \cdot m) = \log_b(n) + \log_b(m)$ \\[0.4cm]
+    logaritmo del rapporto: & $ \displaystyle \log_b(\frac{n}{m}) = \log_b(n) - \log_b(m)$ \\[0.4cm]
+    logaritmo della potenza: & $\displaystyle \log_b(n^k) = k \cdot \log_b(n)$\\[0.4cm]
+    cambio di base: & $\displaystyle \log_b(n) = \frac{log_c(n)}{\log_c(b)}$ \\[0.6cm]
+    inversione base esponente: & $\displaystyle n^{\log_b(m)} = m^{\log_b(n)}$ \\[0.4cm]
+    complessità: & $\displaystyle \log_b(n) = \Theta(\log_c(n))$ \\[0.4cm]
+    complessità: & $\displaystyle \Theta(\log(n!)) = \Theta(n \log(n))$ \\[0.4cm]
+    \hline
+\end{tabular}
+
+\end{document}

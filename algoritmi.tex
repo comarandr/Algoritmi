@@ -208,7 +208,7 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
     \hline
     \textbf{Algoritmo} & \textbf{peggiore} & \textbf{ migliore medio} & \textbf{stabile } & \textbf{Inplace}\\
     \hline
-    \hyperlink{insertionsort}{\textbf{Insertion Sort}} & $\Theta(n^2)$ & $\Theta(n)$ & stabile & inplace\\
+    \hyperlink{insertionsort}{\textbf{Insertion Sort}} & $\Theta(n^2)$ & $\Theta(n)$ & stabile & inplace\\ 
     \hyperlink{merge}{Merge} & $\Theta(n)$ & $\Theta(n)$ & stabile & non inplace\\
     \hyperlink{mergesort}{\textbf{Merge Sort}}& $\Theta(n \log n)$ & $\Theta(n \log n)$ & & non inplace\\
     \hyperlink{heapify}{Heapify} & $O(\log n)$ & & & \\
@@ -224,7 +224,8 @@ Ovver possiamo considerare unicamente il termine di ordine maggiore.
 \end{tabular}
 \newpage
 \section{Cenni introduttivi da SISTEMARE}
-\paragraph{valutazione complessità}: \\
+\paragraph{valutazione complessità}: 
+
 Ogni istruzione di base (assegnamenti, confronti, operazioni algoritmiche) ha un costo costante $c_h$.
 Per semplicità, la funzione di complessità è così strutturata:
 \begin{itemize}
@@ -242,6 +243,12 @@ $a1 \leq a2  \leq ... \leq an$. \newline
 Soluzioni:
 \hypertarget{insertionsort}{} \subsection{Insertion sort}  %%%%%%%%% INSERTION SORT %%%
 
+Dato un vettore, inizio a scorrere da sinistra verso destra. Ad ogni passo, confronto l'elemento corrente con quelli precedenti, e lo inserisco nella 
+giusta posizione.
+\[\text{A = [\colorbox{green}{5,} 2, 4, ...]}\]
+\[\text{A = [\colorbox{yellow}{5,} \colorbox{green}{2,} 4, ...]}\]
+\[\text{A = [\colorbox{yellow}{2, 5,} \colorbox{green}{4,} ...]}\]
+\[\text{A = [\colorbox{yellow}{2, 4, 5,} \colorbox{green}{...}]}\]
 
     \begin{algorithm}[H] 
         \caption{InsertionSort\label{IR}}
@@ -259,8 +266,10 @@ Soluzioni:
         }
         \end{algorithm}
 
-\paragraph{Complessità Spaziale}: $\Theta(1)$ in richiede unicamente 3 interi (i, j, A.length) 
-per memorizzare i valori. Questi lo rende un algoritmo \textbf{inplace}.
+\paragraph{Complessità Spaziale}: $\Theta(1)$ in richiede unicamente 3 interi (i, j, A.length)
+per memorizzare i valori. Questo lo rende un algoritmo \textbf{inplace}.\\
+È un algoritmo \textbf{stabile} con $A[j] > key$, in quanto non scambia elementi uguali.\\
+
 
 \paragraph{Complessità Temporale}:
 \begin{itemize}
@@ -274,7 +283,12 @@ Nel \textbf{caso medio} l'algoritmo ha complessità $\Theta(n^2)$.
 \hypertarget{mergesort}{}\subsection{Merge sort} %%%%%%%%%%% MERGE SORT %%%%%%%%%%%
 Problema: devo riordinare un generico array A di $n$ elementi. Immagino di voler riordinare una sottosezione di A, ovvero A[p..q].
 Trovo r pari a $ \floor{\frac{(p+q)}{2}}$ e ordino ricorsivamente le due sottosezioni A[p..r] e A[r+1..q]. Infine unisco le due sottosezioni 
-mediante la procedura \hyperlink{merge}{Merge}
+mediante la procedura \hyperlink{merge}{Merge}.
+
+\[\text{p = 4, q = 11, r = 7, m = q - p + 1 = 8}\] 
+\[\text{[..., \colorbox{yellow}{20, 10, 21, 30,} \colorbox{green}{9, 8, 26, 25,} ...]}\]
+\[\text{[..., \colorbox{yellow}{20, 10,} \colorbox{yellow}{21, 30,} \colorbox{green}{9, 8,} \colorbox{green}{26,25,} ...]}\]
+\[\text{[..., \colorbox{yellow}{20,} \colorbox{yellow}{10,} \colorbox{yellow}{21,} \colorbox{yellow}{30,} \colorbox{green}{9,} \colorbox{green}{8,} \colorbox{green}{26,} \colorbox{green}{25,} ...]}\]
 
 
 \begin{algorithm}[H]
@@ -305,6 +319,14 @@ $\begin{cases}
 \hypertarget{merge}{} \subsection{Merge} %%%%%%%%%%% MERGE %%%
 La procedura prende in input o due vettori oppure un vettore con due sottosezioni \textbf{già ordinate} e le unisce in un unico vettore ordinato. 
 Si basa sul confronto tra i valori più piccoli delle due sottosezioni, operazione poco costosa in quanto sono ordinate.
+
+\[\text{[..., \colorbox{yellow}{20,} \colorbox{yellow}{10,} \colorbox{yellow}{21,} \colorbox{yellow}{30,} \colorbox{green}{9,} \colorbox{green}{8,} \colorbox{green}{26,} \colorbox{green}{25,} ...]}\]
+\[\text{[..., \colorbox{yellow}{10, 20,} \colorbox{yellow}{21, 30,} \colorbox{green}{8, 9,} \colorbox{green}{25,26,} ...]}\]
+\[\text{[..., \colorbox{yellow}{10, 20, 21, 30,} \colorbox{green}{8, 9, 25, 26,} ...]}\]
+\[\text{[..., \colorbox{yellow}{\textbf{10}, 20, 21, 30,} \colorbox{green}{\textbf{8}, 9, 25, 26,} ...] $\rightarrow$ [\textbf{8}, ???] }\]
+\[\text{[..., \colorbox{yellow}{\textbf{10}, 20, 21, 30,} \colorbox{green}{8,\textbf{9}, 25, 26,} ...] $\rightarrow$ [8, \textbf{9}, ???] }\]
+\[\text{[..., \colorbox{yellow}{\textbf{10}, 20, 21, 30,} \colorbox{green}{8,9,\textbf{25}, 26,} ...] $\rightarrow$ [8, 9, \textbf{10}, ???] }\]
+\[\text{[..., \colorbox{yellow}{10,\textbf{20}, 21, 30,} \colorbox{green}{8,9,\textbf{25}, 26,} ...] $\rightarrow$ [8, 9, 10, \textbf{20}, ???] }\]
 
 \begin{algorithm}[H]
 \caption{Merge}
@@ -823,6 +845,22 @@ le possibili permutazioni sono $m!$
 \end{itemize}
 Se una cella è occupata, si passa alla successiva. Non rispetta l'ipotesi di hashing uniforme, genera soltanto m possibili scansioni sulle m!
 
+\part{Glossario} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Termini e definizione}
+
+\paragraph{inplace} algoritmo che non richiede spazio aggiuntivo per l'esecuzione, quindi $\Theta(1)$
+
+\paragraph{stabile} algoritmo che mantiene l'ordine relativo degli elementi con chiavi uguali
+
+\paragraph{dinamico} struttura dati che può variare nel tempo
+
+\paragraph{sequenziale} struttura dati in cui gli elementi sono memorizzati in sequenza
+
+\paragraph{statico} struttura dati in cui lo spazio di memoria non varia
+
+
+
+
 \part{Esercizi e sfide} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{esercizi scrittura di algoritmi}
 \section{equazioni ricorsive}
@@ -856,6 +894,7 @@ Tabella dei costi per livello:\\
 \end{tabular}
 
 \paragraph{costo:} somma del costo dei livelli 
+
 
 $\displaystyle T(n) = b + 2 \cdot b + ... 2^i \cdot b + ... + 2^x \cdot a $
 

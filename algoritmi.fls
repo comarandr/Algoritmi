@@ -198,7 +198,11 @@ INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 OUTPUT algoritmi.toc
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx2074.tfm
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
+INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0700.tfm
+INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0500.tfm
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1000.tfm
+INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0700.tfm
+INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0500.tfm
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbi1000.tfm
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\comar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
